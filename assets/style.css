@@ -647,3 +647,15 @@ ol.start { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; gap:
   .genre-tags li:nth-child(4) { color: #8a4f15; }
   .genre-tags li:nth-child(9) { color: #13702f; border-color: #13702f; }
 }
+
+/* Video: a poster that turns into the YouTube player on click */
+.video { max-width: 960px; margin: 2rem auto 0; }
+.video-frame { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--edge-hi); border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+.video-frame iframe, .yt, .yt img { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.yt { display: block; cursor: pointer; }
+.yt img { object-fit: cover; transition: filter .2s; }
+.yt:hover img, .yt:focus-visible img { filter: brightness(1.15); }
+.yt-play { position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; border-radius: 50%;
+  background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; box-shadow: 0 6px 24px rgba(0,0,0,.5); }
+.yt-play svg { margin-left: 5px; }
+.video figcaption { margin-top: .6rem; text-align: center; color: var(--muted, inherit); font-size: .95rem; }
