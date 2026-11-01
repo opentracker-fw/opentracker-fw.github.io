@@ -209,4 +209,130 @@ def idm(w=480, h=240):
     return _svg(w, h, "".join(p))
 
 
-ART = {"classic": classic, "techno": techno, "idm": idm}
+# 3x5 pixel glyphs for the score line of the retro screen (original, drawn here).
+_GLYPHS = {
+    "0": "111101101101111", "1": "010110010010111", "2": "111001111100111", "3": "111001111001111",
+    "4": "101101111001001", "5": "111100111001111", "6": "111100111101111", "7": "111001010010010",
+    "8": "111101111101111", "9": "111101111001111", "H": "101101111101101", "I": "111010010010111",
+    "U": "101101101101111", "P": "111101111100100", "-": "000000111000000", " ": "000000000000000",
+}
+
+
+def _pix(rows, x0, y0, s, fill, extra=""):
+    """A sprite from strings of '#' and '.', one rect per run of '#' (s = pixel size)."""
+    out = []
+    for j, row in enumerate(rows):
+        i = 0
+        while i < len(row):
+            if row[i] == "#":
+                k = i
+                while k < len(row) and row[k] == "#":
+                    k += 1
+                out.append(f'<rect x="{x0 + i * s}" y="{y0 + j * s}" width="{(k - i) * s}" height="{s}"/>')
+                i = k
+            else:
+                i += 1
+    return f'<g fill="{fill}"{extra}>' + "".join(out) + "</g>"
+
+
+def _text(t, x0, y0, s, fill):
+    rows = ["", "", "", "", ""]
+    for ch in t:
+        g = _GLYPHS[ch]
+        for r in range(5):
+            rows[r] += g[r * 3:r * 3 + 3].replace("1", "#").replace("0", ".") + "."
+    return _pix(rows, x0, y0, s, fill)
+
+
+def retro(w=480, h=240):
+    """An arcade cabinet screen: chunky pixels, a square wave, level bars, a joystick, scanlines, phosphor glow."""
+    rnd = random.Random(80)
+    p = []
+    p.append('''<defs>
+<radialGradient id="re-room" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="#2a1250"/><stop offset=".6" stop-color="#120826"/><stop offset="1" stop-color="#05030c"/></radialGradient>
+<radialGradient id="re-crt" cx="50%" cy="50%" r="70%"><stop offset="0" stop-color="#0d1f1a"/><stop offset=".7" stop-color="#06100d"/><stop offset="1" stop-color="#010302"/></radialGradient>
+<radialGradient id="re-vig" cx="50%" cy="50%" r="72%"><stop offset=".62" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".8"/></radialGradient>
+<linearGradient id="re-glare" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".08"/><stop offset=".4" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<pattern id="re-scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="2" fill="#000" opacity=".38"/></pattern>
+<pattern id="re-mask" width="6" height="4" patternUnits="userSpaceOnUse"><rect width="2" height="4" fill="#ff3b3b" opacity=".05"/><rect x="2" width="2" height="4" fill="#39ff6a" opacity=".05"/><rect x="4" width="2" height="4" fill="#3b8bff" opacity=".05"/></pattern>
+<filter id="re-glow" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>''')
+    p.append(f'<rect width="{w}" height="{h}" fill="url(#re-room)"/>')
+    # floor glow and the cabinet bezel around the tube
+    p.append('<ellipse cx="240" cy="236" rx="250" ry="22" fill="#ff3fa4" opacity=".16"/>')
+    bx, by, bw, bh = 40, 10, 400, 222
+    p.append(f'<rect x="{bx}" y="{by}" width="{bw}" height="{bh}" rx="22" fill="#17121f" stroke="#3a2d55" stroke-width="2"/>')
+    p.append(f'<rect x="{bx + 6}" y="{by + 6}" width="{bw - 12}" height="{bh - 12}" rx="17" fill="#0a0810"/>')
+    sx, sy, sw, sh = 60, 24, 360, 194
+    p.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="26" fill="url(#re-crt)"/>')
+    p.append(f'<clipPath id="re-clip"><rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="26"/></clipPath>')
+    s = []
+    # stars
+    for _ in range(46):
+        x = sx + rnd.randrange(0, sw // 4) * 4
+        y = sy + rnd.randrange(0, 22) * 4
+        c = rnd.choice(["#ffffff", "#2fd3ff", "#ffcc33", "#ffffff"])
+        s.append(f'<rect x="{x}" y="{y}" width="{rnd.choice([2, 4])}" height="{rnd.choice([2, 4])}" fill="{c}" opacity="{rnd.uniform(.3, .85):.2f}"/>')
+    # score line
+    s.append(_text("1UP 08000", sx + 34, sy + 14, 2, "#ff3fa4"))
+    s.append(_text("HI 99900", sx + 222, sy + 14, 2, "#ffcc33"))
+    # level bars: stacked chunky blocks, green to amber to red
+    base = sy + 176
+    for i in range(14):
+        x = sx + 26 + i * 22
+        n = max(1, round(6 + 5 * math.sin(i / 1.7) + rnd.uniform(-2, 2)))
+        for k in range(n):
+            c = "#39ff6a" if k < 6 else ("#ffcc33" if k < 9 else "#ff3b3b")
+            s.append(f'<rect x="{x}" y="{base - (k + 1) * 8}" width="16" height="6" fill="{c}" opacity="{.35 if k < n - 1 else .55}"/>')
+    # the square wave with a duty change, in phosphor green, glowing
+    d, x, hi = [f"M{sx} {sy + 104}"], sx, True
+    for wdt in (24, 24, 24, 24, 12, 36, 12, 36, 8, 40, 8, 40, 24, 24, 24, 24):
+        y = sy + (72 if hi else 104)
+        d.append(f"V{y} H{x + wdt}")
+        x += wdt
+        hi = not hi
+    s.append(f'<path d="{" ".join(d)}" fill="none" stroke="#39ff6a" stroke-width="4" stroke-linejoin="miter" filter="url(#re-glow)"/>')
+    # sprites: a pixel joystick and a pixel note
+    knob = [".###.",
+            "#####",
+            "#####",
+            ".###."]
+    stick = ["....#....",
+             "....#....",
+             "....#....",
+             "....#....",
+             ".#######.",
+             "#########"]
+    s.append(_pix(knob, sx + 284, sy + 34, 4, "#ff3fa4", ' filter="url(#re-glow)"'))
+    s.append(_pix(stick, sx + 276, sy + 50, 4, "#2fd3ff", ' filter="url(#re-glow)"'))
+    note = ["....##",
+            "....###",
+            "....#.##",
+            "....#..#",
+            "....#...",
+            ".####...",
+            "#####...",
+            ".###...."]
+    s.append(_pix(note, sx + 44, sy + 38, 4, "#ffcc33", ' filter="url(#re-glow)"'))
+    # a pixel ship at the bottom and its shot
+    ship = ["...##...",
+            "..####..",
+            ".######.",
+            "##.##.##"]
+    s.append(_pix(ship, sx + 166, sy + 152, 4, "#ff3fa4", ' filter="url(#re-glow)"'))
+    s.append(f'<rect x="{sx + 179}" y="{sy + 120}" width="6" height="14" fill="#ffffff" filter="url(#re-glow)"/>')
+    # scanlines, shadow mask, vignette and glare over the picture
+    s.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" fill="url(#re-mask)"/>')
+    s.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" fill="url(#re-scan)"/>')
+    s.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" fill="url(#re-vig)"/>')
+    p.append('<g clip-path="url(#re-clip)">' + "".join(s) + "</g>")
+    p.append(f'<path d="M{sx + 26} {sy + 6} Q{sx + sw / 2} {sy - 4} {sx + sw - 26} {sy + 6} L{sx + sw - 40} {sy + 70} Q{sx + sw / 2} {sy + 58} {sx + 40} {sy + 70} Z" fill="url(#re-glare)"/>')
+    p.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="26" fill="none" stroke="#000" stroke-width="3" opacity=".7"/>')
+    # cabinet side lights
+    for k in range(6):
+        p.append(f'<rect x="{bx - 14}" y="{40 + k * 28}" width="6" height="12" fill="{["#ff3fa4", "#2fd3ff", "#ffcc33"][k % 3]}" opacity=".85"/>')
+        p.append(f'<rect x="{bx + bw + 8}" y="{40 + k * 28}" width="6" height="12" fill="{["#2fd3ff", "#ffcc33", "#ff3fa4"][k % 3]}" opacity=".85"/>')
+    return _svg(w, h, "".join(p))
+
+
+ART = {"classic": classic, "techno": techno, "idm": idm, "retro": retro}

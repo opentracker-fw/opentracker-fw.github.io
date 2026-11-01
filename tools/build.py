@@ -39,11 +39,20 @@ PREVIEW_VERSION = "3.0.0 preview"
 FW_REPO = f"https://github.com/{ORG}/opentracker"
 PREVIEW_TAG = "v3.0.0-preview"
 
+# The firmware, synths and fx repos are private for now. While this is False the site
+# shows no links to them: no "Code" footer column, no module "Source" rows, no profile or
+# branch links, and bug reports go to the site repo's issue tracker.
+PUBLIC_REPOS = False
+ISSUES = f"{FW_REPO}/issues" if PUBLIC_REPOS else f"https://github.com/{ORG}/{SITE_REPO}/issues"
+# The public 2.x source that people can fork.
+CONTRIBUTE = "https://github.com/sandlbn/polyend-tracker-re/tree/v2"
+
 # The published 3.0 images. Mini (m), No-FM (n), full (v) and core (c) are not published.
 IMAGES = [
     ("a", "classic", "Classic", "Analog-style synths: acid, poly pads, mono basses and leads."),
     ("i", "idm", "IDM", "FM, wavetable FM, drums and acid."),
     ("t", "techno", "Techno", "T-Type drums, acid, basses and stabs, drive / bitcrush and a tempo-synced echo."),
+    ("r", "retro", "Retro", "Chip-style synths: 8-bit computer and handheld voices, buzz tones, console FM and a chip DAC on the mix."),
 ]
 
 # One-line vibe per flavour (home page boxes) and the order they are shown in.
@@ -51,10 +60,11 @@ VIBE = {
     "techno": "Concrete, strobes and a kick that doesn't stop: drums, acid, drive and a tempo-synced echo.",
     "idm": "Broken grids and bent FM: wavetables, four-operator FM, drums and acid.",
     "classic": "Warm and analog in style: poly pads, mono basses, duophonic leads and tape.",
+    "retro": "Blips, buzz and fast arps: four chip-style synths, a chip DAC on the mix and a tempo-synced echo.",
     "mini": "The five Mini synths, so every Mini project plays.",
     "nofm": "Every synth but the FM ones, with both drum synths.",
 }
-FEATURED = ["techno", "idm", "classic"]
+FEATURED = ["techno", "idm", "classic", "retro"]
 
 # Per-flavour section on the home page: short feature cards and simulator screenshots
 # (assets/shots/*.png, 800x480, taken with the headless simulator built for that profile).
@@ -62,6 +72,7 @@ TAGLINE = {
     "techno": "Built for the warehouse.",
     "idm": "Built for the bedroom lab.",
     "classic": "Built for the studio wall of knobs.",
+    "retro": "Built for the arcade.",
 }
 FEATURES = {
     "techno": [
@@ -82,6 +93,12 @@ FEATURES = {
         ("D-Type", "Three oscillators into a filter that whistles on its own."),
         ("JU6", "A poly with a built-in stereo chorus, saved in every patch."),
     ],
+    "retro": [
+        ("8-Type", "Three oscillators with ring, sync and the combined waves into a 12 dB multimode filter: leads, basses, chords."),
+        ("Hand-Type", "Pulse with sweep, a 4-bit wave or noise, one channel per patch, or a whole drum kit by note."),
+        ("B-Type and Arc-Type", "Buzz tones from polynomial counters, and four-operator FM with looping envelopes."),
+        ("LoFi", "The mix through a small chip's output: bits, sample rate, uneven DAC steps and a speaker."),
+    ],
 }
 SHOTS = {
     "techno": [
@@ -99,6 +116,12 @@ SHOTS = {
         ("classic-cstype-edit.png", "CS-Type: layer I oscillator of OT Film Pad"),
         ("classic-atype-edit.png", "A-Type: oscillator 1 of OT Lead 2-Osc"),
         ("classic-dtype-edit.png", "D-Type: oscillator 1 of OT Growl Bass"),
+    ],
+    "retro": [
+        ("retro-eight-edit.png", "8-Type: oscillator 1 of OT Chip Lead"),
+        ("retro-arc-edit.png", "Arc-Type: operator 1 of OT Loop Buzz Pad, with a looping envelope"),
+        ("retro-hand-edit.png", "Hand-Type: the pulse channel of OT Pulse Lead"),
+        ("retro-lofi.png", "LoFi on the whole mix (Shift + Master)"),
     ],
 }
 
@@ -132,6 +155,22 @@ MODULES = {
     "TTY1": dict(name="T-Type", kind="synth", repo="synths", folder="modules/ttype", patches=12,
                  desc="Drum synth in the classic analog drum machine style. One patch is one kit: kick, snare, clap, three toms, rim, "
                       "cowbell, hats, crash and ride, each drum with three Characters and its own sends."),
+    "8TY1": dict(name="8-Type", kind="synth", repo="synths", folder="modules/eight", patches=12,
+                 desc="Chip-style synth in the style of the 8-bit home computers of the early 1980s: three oscillators (triangle, saw, "
+                      "pulse with PWM, noise and the combined waves) with ring and sync, a 12 dB multimode filter with 16 resonance "
+                      "steps, Grit, a 16-step ADSR and the CHIP arp, vibrato and slide."),
+    "HND1": dict(name="Hand-Type", kind="synth", repo="synths", folder="modules/hand", patches=12,
+                 desc="Chip-style synth in the style of a 4-channel handheld console: one patch is one channel (pulse with duty, "
+                      "sweep and a second pulse; a 32-step 4-bit wave; or noise) or a whole drum kit by note, with a stepped "
+                      "4-bit envelope, Length and the CHIP arp, vibrato and slide."),
+    "BTY1": dict(name="B-Type", kind="synth", repo="synths", folder="modules/btype", patches=12,
+                 desc="Chip-style synth in the style of the 8-bit computers with polynomial counters: a clock and a divider "
+                      "(Free, Coarse or Fine tuning), the buzz distortions, a second channel a few divider steps away, the "
+                      "high-pass pair, a 4-bit ADSR and the CHIP arp, vibrato and slide."),
+    "ARC1": dict(name="Arc-Type", kind="synth", repo="synths", folder="modules/arc", patches=12,
+                 desc="Four-operator FM in the style of the home consoles of the late 1980s: eight algorithms, feedback, "
+                      "envelopes that can loop, an LFO, a 9-bit DAC with a ladder character, an Aux square or noise voice "
+                      "and the CHIP arp and slide."),
     "TAPE": dict(name="Tape", kind="effect", repo="fx", folder="modules/tape", patches=None,
                  desc="Tape on the whole mix: drive (saturation), head-loss high cut, wow, flutter and mix."),
     "CHOR": dict(name="Chorus", kind="effect", repo="fx", folder="modules/chorus", patches=None,
@@ -141,6 +180,9 @@ MODULES = {
     "ECHO": dict(name="Echo", kind="effect", repo="fx", folder="modules/echo", patches=None,
                  desc="Dub-style echo that follows the song tempo: 1/32 to 1/2 with dotted and triplet times, feedback, low cut, tone, "
                       "ping-pong, duck and mix."),
+    "LOFI": dict(name="LoFi", kind="effect", repo="fx", folder="modules/lofi", patches=None,
+                 desc="The whole mix through a small chip's output: Bits 4-15, a sample-and-hold Rate down to 4 kHz, Ladder "
+                      "(uneven DAC steps), Speaker (TV, Handheld, Monitor), Mono and mix."),
 }
 
 ASSET_DESC = {
@@ -273,6 +315,7 @@ def module_cards(images, kind):
             patches = f'{m["patches"]} {"kits" if mid == "TTY1" else "patches"}'
         url = f'{REPO[m["repo"]]}/{m["folder"]}'
         repo_name = "opentracker-synths" if m["repo"] == "synths" else "opentracker-fx"
+        source = f'\n    <dt>Source</dt><dd><a href="{url}">{repo_name}/{m["folder"]}</a></dd>' if PUBLIC_REPOS else ""
         tag = '<span class="tag fx">effect</span>' if kind == "effect" else '<span class="tag">synth</span>'
         out.append(f'''<article class="panel module" id="mod-{mid.lower()}">
   <div class="card-head"><h3>{esc(m["name"])}</h3>{tag}</div>
@@ -280,8 +323,7 @@ def module_cards(images, kind):
   <p>{esc(m["desc"])}</p>
   <dl class="meta">
     <dt>Images</dt><dd><ul class="chips">{chips}</ul></dd>
-    <dt>Patches</dt><dd>{esc(patches)}</dd>
-    <dt>Source</dt><dd><a href="{url}">{repo_name}/{m["folder"]}</a></dd>
+    <dt>Patches</dt><dd>{esc(patches)}</dd>{source}
   </dl>
 </article>''')
     return "\n".join(out)
@@ -319,6 +361,8 @@ def flavour_card(im, sizes, dates, compact=False, level=3):
     purl = f"{DL}/{PREVIEW_TAG}/{im['patches']}"
     cls = "flav flav-" + p + (" flav-compact" if compact else "")
     hid = f"flav-{p}-h"
+    src = (f' &middot;\n    <a href="{FW_REPO}/blob/3.x/reimpl/profiles/{p}.toml">source: profiles/{p}.toml</a>'
+           if PUBLIC_REPOS else "")
     return f'''<article class="{cls}" id="get-{p}" data-variant="{v}" aria-labelledby="{hid}">
   <div class="flav-art">{ART[p]()}<span class="badge badge-preview">Preview 3.0.0</span></div>
   <div class="flav-body">
@@ -330,8 +374,7 @@ def flavour_card(im, sizes, dates, compact=False, level=3):
     </div>
     {dl_button(url, f"Download the {esc(im['name'])} image", im["file"], sizes[im["file"]], variant=v)}
     <a class="flav-patch" href="{purl}">Patches: <span class="mono">{im["patches"]}</span> ({size_str(sizes[im["patches"]])})</a>
-    <p class="fw-meta"><span>{PREVIEW_VERSION}</span> &middot; <span>{dates.get(im["file"], "")}</span> &middot;
-    <a href="{FW_REPO}/blob/3.x/reimpl/profiles/{p}.toml">source: profiles/{p}.toml</a></p>
+    <p class="fw-meta"><span>{PREVIEW_VERSION}</span> &middot; <span>{dates.get(im["file"], "")}</span>{src}</p>
   </div>
 </article>'''
 
@@ -347,6 +390,7 @@ def stable_card(sizes):
         (f"OpenTracker-{v}-Projects.zip", "Test songs", "", "copy to /Projects"),
         (f"OpenTracker-{v}-Manual.pdf", "Manual (PDF)", "", "the 2.x user manual"),
     ]
+    src = f' &middot;\n    <a href="{FW_REPO}/tree/2.x">source: branch 2.x</a>' if PUBLIC_REPOS else ""
     lis = "".join(f'<li><a href="{f(n)}">{label}</a>{extra} <span class="meta">{what}, {size_str(sizes[n])}</span></li>'
                   for n, label, extra, what in files)
     return f'''<article class="stable" aria-labelledby="stable-h">
@@ -357,12 +401,12 @@ def stable_card(sizes):
     stereo samples, Mini-format projects, USB Storage mode, live resampling, streaming from the card and
     colour themes. <strong>Use this one for real work.</strong></p>
     <ul class="stable-files">{lis}</ul>
+    <p class="btn-row"><a class="btn" href="{CONTRIBUTE}">Source on GitHub: fork it and contribute</a></p>
   </div>
   <div class="stable-dl">
     {dl_button(f(STABLE_IMAGE), f"Download OpenTracker {v}", STABLE_IMAGE, sizes[STABLE_IMAGE], " dl-stable")}
     <a class="flav-patch" href="downloads.html#{STABLE_TAG}">All files, checksums and release notes</a>
-    <p class="fw-meta"><span>{v}</span> &middot; <span>{STABLE_DATE}</span> &middot;
-    <a href="{FW_REPO}/tree/2.x">source: branch 2.x</a></p>
+    <p class="fw-meta"><span>{v}</span> &middot; <span>{STABLE_DATE}</span>{src}</p>
   </div>
 </article>'''
 
@@ -376,7 +420,8 @@ def flavour_sections(images):
             f'<figure class="device"><div class="bezel"><div class="screen">'
             f'<a href="assets/shots/{f}" title="Open at full size (800 x 480)"><img src="assets/shots/{f}" width="800" height="480" alt="{esc(c)}" loading="lazy"></a></div>'
             f'<span class="bezel-led" aria-hidden="true"></span></div><figcaption>{esc(c)}</figcaption></figure>'
-            for f, c in SHOTS[p])
+            for f, c in SHOTS.get(p, []))
+        shots_div = f'\n  <div class="shots">{shots}</div>' if shots else ""
         out.append(f'''<section class="inside inside-{p}" id="inside-{p}" aria-labelledby="inside-{p}-h">
   <div class="inside-head">
     <span class="key flav-key" aria-hidden="true">{im["variant"]}</span>
@@ -384,8 +429,7 @@ def flavour_sections(images):
     <p class="inside-tag">{esc(TAGLINE[p])}</p>
     <a class="btn" href="#get-{p}">Get <span class="mono">{im["file"]}</span></a>
   </div>
-  <div class="feats">{feats}</div>
-  <div class="shots">{shots}</div>
+  <div class="feats">{feats}</div>{shots_div}
 </section>''')
     return "\n".join(out)
 
@@ -394,6 +438,7 @@ def md_inline(s):
     s = esc(s)
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
     s = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", s)
+    s = re.sub(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", r'<a href="\2">\1</a>', s)
     return s
 
 
@@ -451,7 +496,7 @@ def header(page):
         for href, label in items)
     return f'''<a class="skip" href="#main">Skip to content</a>
 <div class="topbar"><div class="wrap">
-  <a href="index.html#flavours"><span class="badge badge-preview">3.0 preview</span> Techno &middot; IDM &middot; Classic</a>
+  <a href="index.html#flavours"><span class="badge badge-preview">3.0 preview</span> Techno &middot; IDM &middot; Classic &middot; Retro</a>
   <span class="topbar-sep" aria-hidden="true">|</span>
   <a href="index.html#stable"><span class="badge badge-stable">Stable</span> 2.2.3</a>
 </div></div>
@@ -466,9 +511,7 @@ def header(page):
 </header>'''
 
 
-FOOTER = f'''<footer class="site-foot">
-  <div class="wrap">
-    <div class="foot-grid">
+FOOTER_CODE = f'''
       <div>
         <h2>Code</h2>
         <ul>
@@ -476,11 +519,15 @@ FOOTER = f'''<footer class="site-foot">
           <li><a href="https://github.com/{ORG}/opentracker-synths">opentracker-synths</a>: synth modules</li>
           <li><a href="https://github.com/{ORG}/opentracker-fx">opentracker-fx</a>: effect modules</li>
         </ul>
-      </div>
+      </div>''' if PUBLIC_REPOS else ""
+
+FOOTER = f'''<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">{FOOTER_CODE}
       <div>
         <h2>Help</h2>
         <ul>
-          <li><a href="https://github.com/{ORG}/opentracker/issues">Report a bug or ask a question</a></li>
+          <li><a href="{ISSUES}">Report a bug or ask a question</a></li>
           <li><a href="index.html#install">How to install</a></li>
           <li><a href="downloads.html">All releases and checksums</a></li>
         </ul>

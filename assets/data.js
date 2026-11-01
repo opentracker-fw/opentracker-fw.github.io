@@ -54,6 +54,25 @@ window.OT_DATA = {
         "ECHO",
         "TAPE"
       ]
+    },
+    {
+      "variant": "r",
+      "profile": "retro",
+      "name": "Retro",
+      "blurb": "Chip-style synths: 8-bit computer and handheld voices, buzz tones, console FM and a chip DAC on the mix.",
+      "file": "PolyendTrackerOTr300.ptf",
+      "patches": "Patches-retro-3.0.0.zip",
+      "modules": [
+        "ACD1",
+        "FAT1",
+        "8TY1",
+        "HND1",
+        "BTY1",
+        "ARC1",
+        "LOFI",
+        "ECHO",
+        "TAPE"
+      ]
     }
   ],
   "modules": [
@@ -113,6 +132,26 @@ window.OT_DATA = {
       "kind": "synth"
     },
     {
+      "id": "8TY1",
+      "name": "8-Type",
+      "kind": "synth"
+    },
+    {
+      "id": "HND1",
+      "name": "Hand-Type",
+      "kind": "synth"
+    },
+    {
+      "id": "BTY1",
+      "name": "B-Type",
+      "kind": "synth"
+    },
+    {
+      "id": "ARC1",
+      "name": "Arc-Type",
+      "kind": "synth"
+    },
+    {
       "id": "TAPE",
       "name": "Tape",
       "kind": "effect"
@@ -130,6 +169,11 @@ window.OT_DATA = {
     {
       "id": "ECHO",
       "name": "Echo",
+      "kind": "effect"
+    },
+    {
+      "id": "LOFI",
+      "name": "LoFi",
       "kind": "effect"
     }
   ]
