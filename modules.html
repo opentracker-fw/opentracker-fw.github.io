@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Synths and effects: OpenTracker</title>
+<meta name="description" content="The synth and effect modules of OpenTracker 3.0: what each one does, which images include it and where its source is.">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!-- GEN:header -->
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar"><div class="wrap">
+  <a href="index.html#flavours"><span class="badge badge-preview">3.0 preview</span> Techno &middot; IDM &middot; Classic</a>
+  <span class="topbar-sep" aria-hidden="true">|</span>
+  <a href="index.html#stable"><span class="badge badge-stable">Stable</span> 2.2.3</a>
+</div></div>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="OpenTracker home">
+      <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="6" fill="#15181b" stroke="#3d444c" stroke-width="2"/><rect x="6" y="7" width="4" height="4" rx="1" fill="#ffb22e"/><rect x="22" y="7" width="4" height="4" rx="1" fill="#36e0b8"/><rect x="14" y="14" width="4" height="4" rx="1" fill="#ffb22e"/><rect x="6" y="21" width="4" height="4" rx="1" fill="#36e0b8"/><rect x="22" y="21" width="4" height="4" rx="1" fill="#ffb22e"/></svg>
+      <span class="brand-name">Open<b>Tracker</b></span>
+    </a>
+    <nav class="nav" aria-label="Main"><ul><li><a href="index.html">Home</a></li><li><a href="images.html">3.0 images</a></li><li><a href="modules.html" aria-current="page">Synths &amp; effects</a></li><li><a href="downloads.html">Downloads</a></li></ul></nav>
+  </div>
+</header>
+<!-- /GEN:header -->
+
+<main id="main">
+  <div class="wrap">
+    <p class="eyebrow"><span class="led" aria-hidden="true"></span> 3.0 modules</p>
+    <h1>Synths &amp; effects</h1>
+    <p class="lead">In OpenTracker 3, every synth engine and every master effect is a module. Each
+    <a href="images.html">image</a> compiles in a set of them. The sounds are our own design. Synths live in
+    <code>opentracker-synths</code>, effects in <code>opentracker-fx</code>.</p>
+    <p class="meta">Patch counts are the patches in the 3.0.0 preview pack. Copy <code>Patches/</code> from an
+    image's patch zip to the root of the SD card, then use Load Patch on the Synth page.</p>
+
+    <h2 id="synths">Synths</h2>
+    <div class="grid">
+<!-- GEN:synth-cards -->
+<article class="panel module" id="mod-acd1">
+  <div class="card-head"><h3>ACD</h3><span class="tag">synth</span></div>
+  <div class="sub">module id ACD1</div>
+  <p>Acid bass and lead: a 24 dB and a ladder-style filter and glide, mono or poly.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-classic"><span class="key small" aria-hidden="true">a</span> Classic</a></li><li><a href="images.html#get-idm"><span class="key small" aria-hidden="true">i</span> IDM</a></li><li><a href="images.html#get-techno"><span class="key small" aria-hidden="true">t</span> Techno</a></li></ul></dd>
+    <dt>Patches</dt><dd>12 patches</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-synths/tree/main/modules/acd">opentracker-synths/modules/acd</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-fat1">
+  <div class="card-head"><h3>FAT</h3><span class="tag">synth</span></div>
+  <div class="sub">module id FAT1</div>
+  <p>A stack of detuned saws for supersaw pads, leads and basses.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-classic"><span class="key small" aria-hidden="true">a</span> Classic</a></li><li><a href="images.html#get-idm"><span class="key small" aria-hidden="true">i</span> IDM</a></li><li><a href="images.html#get-techno"><span class="key small" aria-hidden="true">t</span> Techno</a></li></ul></dd>
+    <dt>Patches</dt><dd>8 patches</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-synths/tree/main/modules/fat">opentracker-synths/modules/fat</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-vap1">
+  <div class="card-head"><h3>VAP</h3><span class="tag">synth</span></div>
+  <div class="sub">module id VAP1</div>
+  <p>Virtual-analog poly: morphing oscillators, hard sync, 15 filter types and a 6-slot modulation matrix.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-classic"><span class="key small" aria-hidden="true">a</span> Classic</a></li></ul></dd>
+    <dt>Patches</dt><dd>16 patches</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-synths/tree/main/modules/vap">opentracker-synths/modules/vap</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-prc1">
+  <div class="card-head"><h3>PERC</h3><span class="tag">synth</span></div>
+  <div class="sub">module id PRC1</div>
+  <p>Drum machine with one drum per note: kick, snare, hats, cymbal, perc and tunable toms.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-idm"><span class="key small" aria-hidden="true">i</span> IDM</a></li></ul></dd>
+    <dt>Patches</dt><dd>16 patches</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-synths/tree/main/modules/perc">opentracker-synths/modules/perc</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-wtf1">
+  <div class="card-head"><h3>WTFM</h3><span class="tag">synth</span></div>
+  <div class="sub">module id WTF1</div>
+  <p>Two-operator wavetable FM with three feedback paths: electric pianos, clav, bells, mallets, basses and pads.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-idm"><span class="key small" aria-hidden="true">i</span> IDM</a></li></ul></dd>
+    <dt>Patches</dt><dd>30 patches</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-synths/tree/main/modules/wtfm">opentracker-synths/modules/wtfm</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-fm4s">
+  <div class="card-head"><h3>FM4</h3><span class="tag">synth</span></div>
+  <div class="sub">module id FM4S</div>
+  <p>Four-operator FM: 8 algorithms, feedback, an envelope per operator and an LFO.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-idm"><span class="key small" aria-hidden="true">i</span> IDM</a></li></ul></dd>
+    <dt>Patches</dt><dd>none yet: start from Init</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-synths/tree/main/modules/fm4">opentracker-synths/modules/fm4</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-ju6s">
+  <div class="card-head"><h3>JU6</h3><span class="tag">synth</span></div>
+  <div class="sub">module id JU6S</div>
+  <p>Poly synth in the style of the classic early-1980s polysynths: saw and pulse with PWM, sub oscillator, noise, 4-position high-pass, resonant 24 dB low-pass and a built-in stereo chorus (Off, I, II) per slot.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-classic"><span class="key small" aria-hidden="true">a</span> Classic</a></li><li><a href="images.html#get-techno"><span class="key small" aria-hidden="true">t</span> Techno</a></li></ul></dd>
+    <dt>Patches</dt><dd>12 patches</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-synths/tree/main/modules/ju6">opentracker-synths/modules/ju6</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-dty1">
+  <div class="card-head"><h3>D-Type</h3><span class="tag">synth</span></div>
+  <div class="sub">module id DTY1</div>
+  <p>Mono synth in the style of the classic three-oscillator synths of the 1970s: three oscillators, white or pink noise, mixer feedback, a self-oscillating 24 dB low-pass, two contours, glide and a mod wheel.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-classic"><span class="key small" aria-hidden="true">a</span> Classic</a></li><li><a href="images.html#get-techno"><span class="key small" aria-hidden="true">t</span> Techno</a></li></ul></dd>
+    <dt>Patches</dt><dd>12 patches</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-synths/tree/main/modules/dtype">opentracker-synths/modules/dtype</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-cst1">
+  <div class="card-head"><h3>CS-Type</h3><span class="tag">synth</span></div>
+  <div class="sub">module id CST1</div>
+  <p>Polysynth in the style of the big two-layer polysynths of the late 1970s: two layers per note, each with its own oscillators, filters and envelopes; ring modulator, Brilliance, Touch and Ribbon.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-classic"><span class="key small" aria-hidden="true">a</span> Classic</a></li></ul></dd>
+    <dt>Patches</dt><dd>12 patches</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-synths/tree/main/modules/cstype">opentracker-synths/modules/cstype</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-aty1">
+  <div class="card-head"><h3>A-Type</h3><span class="tag">synth</span></div>
+  <div class="sub">module id ATY1</div>
+  <p>Two-oscillator synth in the style of the semi-modular duophonic synths of the 1970s: hard sync, ring modulator or noise, sample &amp; hold, 24 or 12 dB low-pass, Keyboard Duo and note priority.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-classic"><span class="key small" aria-hidden="true">a</span> Classic</a></li></ul></dd>
+    <dt>Patches</dt><dd>12 patches</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-synths/tree/main/modules/atype">opentracker-synths/modules/atype</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-tty1">
+  <div class="card-head"><h3>T-Type</h3><span class="tag">synth</span></div>
+  <div class="sub">module id TTY1</div>
+  <p>Drum synth in the classic analog drum machine style. One patch is one kit: kick, snare, clap, three toms, rim, cowbell, hats, crash and ride, each drum with three Characters and its own sends.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-techno"><span class="key small" aria-hidden="true">t</span> Techno</a></li></ul></dd>
+    <dt>Patches</dt><dd>12 kits</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-synths/tree/main/modules/ttype">opentracker-synths/modules/ttype</a></dd>
+  </dl>
+</article>
+<!-- /GEN:synth-cards -->
+    </div>
+
+    <h2 id="effects">Effects</h2>
+    <p>Effects run on the whole mix, on their own pages next to the Master screen (<kbd>Shift</kbd> + <kbd>Master</kbd>). They start Off.</p>
+    <div class="grid">
+<!-- GEN:effect-cards -->
+<article class="panel module" id="mod-tape">
+  <div class="card-head"><h3>Tape</h3><span class="tag fx">effect</span></div>
+  <div class="sub">module id TAPE</div>
+  <p>Tape on the whole mix: drive (saturation), head-loss high cut, wow, flutter and mix.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-classic"><span class="key small" aria-hidden="true">a</span> Classic</a></li><li><a href="images.html#get-idm"><span class="key small" aria-hidden="true">i</span> IDM</a></li><li><a href="images.html#get-techno"><span class="key small" aria-hidden="true">t</span> Techno</a></li></ul></dd>
+    <dt>Patches</dt><dd>none (an effect)</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-fx/tree/main/modules/tape">opentracker-fx/modules/tape</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-chor">
+  <div class="card-head"><h3>Chorus</h3><span class="tag fx">effect</span></div>
+  <div class="sub">module id CHOR</div>
+  <p>Stereo chorus on the whole mix: rate, depth, width and mix.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-idm"><span class="key small" aria-hidden="true">i</span> IDM</a></li></ul></dd>
+    <dt>Patches</dt><dd>none (an effect)</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-fx/tree/main/modules/chorus">opentracker-fx/modules/chorus</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-dirt">
+  <div class="card-head"><h3>Dirt</h3><span class="tag fx">effect</span></div>
+  <div class="sub">module id DIRT</div>
+  <p>Drive and bitcrush on the whole mix: Soft, Hard, Fold and Asym shapers, Bits 4-16, sample-rate reduction, tone and mix.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-techno"><span class="key small" aria-hidden="true">t</span> Techno</a></li></ul></dd>
+    <dt>Patches</dt><dd>none (an effect)</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-fx/tree/main/modules/dirt">opentracker-fx/modules/dirt</a></dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-echo">
+  <div class="card-head"><h3>Echo</h3><span class="tag fx">effect</span></div>
+  <div class="sub">module id ECHO</div>
+  <p>Dub-style echo that follows the song tempo: 1/32 to 1/2 with dotted and triplet times, feedback, low cut, tone, ping-pong, duck and mix.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-techno"><span class="key small" aria-hidden="true">t</span> Techno</a></li></ul></dd>
+    <dt>Patches</dt><dd>none (an effect)</dd>
+    <dt>Source</dt><dd><a href="https://github.com/opentracker-fw/opentracker-fx/tree/main/modules/echo">opentracker-fx/modules/echo</a></dd>
+  </dl>
+</article>
+<!-- /GEN:effect-cards -->
+    </div>
+  </div>
+</main>
+
+<!-- GEN:footer -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h2>Code</h2>
+        <ul>
+          <li><a href="https://github.com/opentracker-fw/opentracker">opentracker</a>: the firmware</li>
+          <li><a href="https://github.com/opentracker-fw/opentracker-synths">opentracker-synths</a>: synth modules</li>
+          <li><a href="https://github.com/opentracker-fw/opentracker-fx">opentracker-fx</a>: effect modules</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Help</h2>
+        <ul>
+          <li><a href="https://github.com/opentracker-fw/opentracker/issues">Report a bug or ask a question</a></li>
+          <li><a href="index.html#install">How to install</a></li>
+          <li><a href="downloads.html">All releases and checksums</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <ul>
+          <li><a href="images.html">Pick a 3.0 image</a></li>
+          <li><a href="modules.html">Synths &amp; effects</a></li>
+          <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io">Site source</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclaimer">OpenTracker is a community project. It is not affiliated with, endorsed by or supported by
+    Polyend. &ldquo;Polyend&rdquo; and &ldquo;Tracker&rdquo; are names of their owner, used here only to say which
+    hardware this firmware runs on.</p>
+  </div>
+</footer>
+<!-- /GEN:footer -->
+</body>
+</html>
