@@ -6,7 +6,7 @@ It is served by GitHub Pages from the root of the `main` branch, with no build s
 - Plain HTML, CSS and a little vanilla JavaScript. No frameworks, CDNs, trackers or analytics.
   The pages also work offline: open `index.html` from disk.
 - Binaries are not committed. They are attached to the GitHub Releases of this repository
-  (`v2.2.3`, `v3.0.0-preview`), and the pages link to
+  (`v2.2.3`, `v2.2.4`, `v3.0.0-preview`), and the pages link to
   `https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/<tag>/<file>`.
 
 ## Layout

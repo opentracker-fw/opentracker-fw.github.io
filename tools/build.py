@@ -31,10 +31,10 @@ REPO = {
     "fx": f"https://github.com/{ORG}/opentracker-fx/tree/main",
 }
 
-STABLE_TAG = "v2.2.3"
-STABLE_VERSION = "2.2.3"
-STABLE_IMAGE = "PolyendTrackerOTv223.ptf"
-STABLE_DATE = "2026-10-30"
+STABLE_TAG = "v2.2.4"
+STABLE_VERSION = "2.2.4"
+STABLE_IMAGE = "PolyendTrackerOTv224.ptf"
+STABLE_DATE = "2026-11-02"
 PREVIEW_VERSION = "3.0.0 preview"
 FW_REPO = f"https://github.com/{ORG}/opentracker"
 PREVIEW_TAG = "v3.0.0-preview"
@@ -186,11 +186,11 @@ MODULES = {
 }
 
 ASSET_DESC = {
-    "PolyendTrackerOTv223.ptf": "Firmware image 2.2.3",
-    "OpenTracker-2.2.3-Patches.zip": "Preset pack: 82 patches (ACD, FAT, VAP, WTFM, PERC)",
-    "OpenTracker-2.2.3-Projects.zip": "Test songs: copy to /Projects",
-    "OpenTracker-2.2.3-Themes.zip": "New: 12 example colour themes, unzip to the card",
-    "OpenTracker-2.2.3-Manual.pdf": "User manual for 2.2.3",
+    "PolyendTrackerOTv224.ptf": "Firmware image 2.2.4",
+    "OpenTracker-2.2.4-Patches.zip": "Preset pack: 82 patches (ACD, FAT, VAP, WTFM, PERC)",
+    "OpenTracker-2.2.4-Projects.zip": "Test songs: copy to /Projects",
+    "OpenTracker-2.2.4-Themes.zip": "12 example colour themes, unzip to the card",
+    "OpenTracker-2.2.4-Manual.pdf": "User manual for 2.2.4",
     "SHA256SUMS": "Checksums of every file in this release",
 }
 
@@ -386,7 +386,7 @@ def stable_card(sizes):
         return f"{DL}/{STABLE_TAG}/{n}"
     files = [
         (f"OpenTracker-{v}-Patches.zip", "Patches", "", "82 patches"),
-        (f"OpenTracker-{v}-Themes.zip", "Themes", ' <span class="badge badge-new">New</span>', "12 colour themes"),
+        (f"OpenTracker-{v}-Themes.zip", "Themes", '', "12 colour themes"),
         (f"OpenTracker-{v}-Projects.zip", "Test songs", "", "copy to /Projects"),
         (f"OpenTracker-{v}-Manual.pdf", "Manual (PDF)", "", "the 2.x user manual"),
     ]
@@ -498,7 +498,7 @@ def header(page):
 <div class="topbar"><div class="wrap">
   <a href="index.html#flavours"><span class="badge badge-preview">3.0 preview</span> Techno &middot; IDM &middot; Classic &middot; Retro</a>
   <span class="topbar-sep" aria-hidden="true">|</span>
-  <a href="index.html#stable"><span class="badge badge-stable">Stable</span> 2.2.3</a>
+  <a href="index.html#stable"><span class="badge badge-stable">Stable</span> {STABLE_VERSION}</a>
 </div></div>
 <header class="site-head">
   <div class="wrap">
