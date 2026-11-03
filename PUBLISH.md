@@ -46,21 +46,17 @@ filtered export: one snapshot commit for `2.x` and one for `3.x` on top of it.
 **opentracker-synths** (history: `.gitignore LICENSE Makefile modules README.md`, no
 `analysis` or `fixtures`):
 
-- `README.md` line 15 and `modules/ju6/src/ju6.cpp`, `ju6.h`, `tests/engine_ju6_test.cpp`
-  name a trademark in comments ("Juno"). `modules/perc/src/perc.cpp` line 791 has a drum
-  machine model number in a comment. Reword them.
-- `modules/acd/src/acd.cpp` and `acd.h` say "clean-room" in their first lines.
-- `README.md` links to `../ReversedPolytracker`; change it to
-  `https://github.com/opentracker-fw/opentracker`.
+- Done (2026-11-02): the "Juno" comments (README, JU6), the drum-machine model number in
+  `modules/perc/src/perc.cpp` and "clean-room" in `modules/acd` are reworded.
+- Done (2026-11-02): `README.md` links to `https://github.com/opentracker-fw/opentracker`.
 
 **opentracker-fx** (history: `.gitignore LICENSE modules README.md`, no `analysis` or
 `fixtures`):
 
-- `modules/juno/` (module `JUNO`, "Juno chorus") has a trademark in its folder, module name,
-  README row and source. It is in no released image (only the unreleased `full` profile).
-  Rename it (for example `modules/ensemble`, module name "Ensemble chorus") and update
-  `reimpl/profiles/full.toml`, or leave it out of the public repository.
-- `README.md` links to `../ReversedPolytracker`; change it as above.
+- Done (2026-11-02): `modules/juno/` is now `modules/bbd/` (module `BBDC`, "BBD chorus");
+  `reimpl/profiles/full.toml` points there, and the 3.x core loads old projects saved with
+  `JUNO` as `BBDC`. `modules/lofi/` (retro profile) was missing from the public repository.
+- Done (2026-11-02): `README.md` links to `https://github.com/opentracker-fw/opentracker`.
 
 The old wording stays in the history of these two repositories. If that matters, publish a
 fresh one-commit snapshot of each (as in step 4) instead of the history.
