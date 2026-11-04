@@ -6,66 +6,64 @@
 <title>Downloads: OpenTracker</title>
 <meta name="description" content="OpenTracker releases: firmware images, patch packs, test songs, the manual, release notes and SHA256 checksums.">
 <meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Syne:wght@600;700;800&amp;display=swap">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <!-- GEN:header -->
 <a class="skip" href="#main">Skip to content</a>
-<div class="topbar"><div class="wrap">
-  <a href="index.html#flavours"><span class="badge badge-preview">3.0 preview</span> Techno &middot; IDM &middot; Classic &middot; Retro</a>
-  <span class="topbar-sep" aria-hidden="true">|</span>
-  <a href="index.html#stable"><span class="badge badge-stable">Stable</span> 2.2.5</a>
-</div></div>
 <header class="site-head">
-  <div class="wrap">
-    <a class="brand" href="index.html" aria-label="OpenTracker home">
-      <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="6" fill="#15181b" stroke="#3d444c" stroke-width="2"/><rect x="6" y="7" width="4" height="4" rx="1" fill="#ffb22e"/><rect x="22" y="7" width="4" height="4" rx="1" fill="#36e0b8"/><rect x="14" y="14" width="4" height="4" rx="1" fill="#ffb22e"/><rect x="6" y="21" width="4" height="4" rx="1" fill="#36e0b8"/><rect x="22" y="21" width="4" height="4" rx="1" fill="#ffb22e"/></svg>
-      <span class="brand-name">Open<b>Tracker</b></span>
-    </a>
-    <nav class="nav" aria-label="Main"><ul><li><a href="index.html">Home</a></li><li><a href="images.html">3.0 images</a></li><li><a href="modules.html">Synths &amp; effects</a></li><li><a href="downloads.html" aria-current="page">Downloads</a></li></ul></nav>
+  <div class="wrap head-in">
+    <a class="brand" href="index.html" aria-label="OpenTracker home"><svg class="logo" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" focusable="false"><rect x="0" y="0" width="11" height="11" rx="2" class="l1"/><rect x="15" y="0" width="11" height="11" rx="2" class="l0"/><rect x="0" y="15" width="11" height="11" rx="2" class="l0"/><rect x="15" y="15" width="11" height="11" rx="2" class="l1"/></svg><span>OpenTracker</span></a>
+    <nav class="nav" aria-label="Main"><ul><li><a href="images.html">3.0 images</a></li><li><a href="modules.html">Synths &amp; effects</a></li><li><a href="downloads.html" aria-current="page">Downloads</a></li></ul></nav>
   </div>
 </header>
 <!-- /GEN:header -->
 
 <main id="main">
   <div class="wrap">
-    <p class="eyebrow"><span class="led" aria-hidden="true"></span> Releases</p>
+    <header class="page-head">
+    <p class="eyebrow">Releases</p>
     <h1>Downloads</h1>
     <p class="lead">Every file is attached to a release of this site's repository. Check a download with
     <code>sha256sum -c SHA256SUMS</code> in the folder you saved the files to.</p>
-    <nav aria-label="On this page">
-      <ul class="chips">
-        <li><a class="btn" href="#v2.2.5">2.2.5 stable</a></li>
-        <li><a class="btn" href="#v3.0.0-preview">3.0.0 preview</a></li>
-        <li><a class="btn" href="#patches">Patch packs</a></li>
-        <li><a class="btn" href="#manual">Manual</a></li>
+    </header>
+    <nav class="toc" aria-label="On this page">
+      <ul>
+<!-- GEN:stable-toc -->
+<li><a href="#v2.2.5">2.2.5 stable</a></li>
+<!-- /GEN:stable-toc -->
+        <li><a href="#v3.0.0-preview">3.0.0 preview</a></li>
+        <li><a href="#patches">Patch packs</a></li>
+        <li><a href="#manual">Manual</a></li>
       </ul>
     </nav>
 
-    <section class="release" id="v2.2.5" aria-labelledby="v2.2.5-h">
+<!-- GEN:stable-release -->
+<section class="release" id="v2.2.5" aria-labelledby="v2.2.5-h">
       <div class="card-head"><h2 id="v2.2.5-h">OpenTracker 2.2.5</h2><span class="badge badge-stable">Stable</span><span class="tag">tag v2.2.5</span></div>
       <p>The current stable release. Install <code>PolyendTrackerOTv225.ptf</code> as described on the
-      <a href="index.html#install">home page</a>. New in this release: the <strong>Performance screen</strong>
-      works as on stock, and its FX now reach synth notes too.
+      <a href="index.html#install">home page</a>. New in this release: the <strong>Performance screen</strong> works as on stock, and its FX now reach synth notes too.
       The previous release, 2.2.4, stays on its <a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/tag/v2.2.4">release page</a>.</p>
       <p>The 2.x source is on GitHub: <a href="https://github.com/sandlbn/polyend-tracker-re/tree/v2">fork it and contribute</a>. Pull requests are welcome.</p>
-<!-- GEN:assets-v2.2.5 -->
-<div class="table-wrap"><table>
+<div class="table-wrap"><table class="stack">
 <caption>Assets of release <code>v2.2.5</code></caption>
 <thead><tr><th scope="col">File</th><th scope="col">What it is</th><th scope="col">Size</th><th scope="col">SHA256</th></tr></thead><tbody>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/OpenTracker-2.2.5-Manual.pdf">OpenTracker-2.2.5-Manual.pdf</a></th><td>User manual for 2.2.5</td><td class="num">30.4 MB</td><td class="sha">469a375793092cdc2b464c1b9739d8ed8dc06855dc0c64fa6da7ed50edf7239c</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/OpenTracker-2.2.5-Patches.zip">OpenTracker-2.2.5-Patches.zip</a></th><td>Preset pack: 82 patches (ACD, FAT, VAP, WTFM, PERC)</td><td class="num">42.5 KB</td><td class="sha">bd86a9d47a6c61a0b580609f5313ac6ed3ec1951e33169375bdb7fe2ea9449c6</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/OpenTracker-2.2.5-Projects.zip">OpenTracker-2.2.5-Projects.zip</a></th><td>Test songs: copy to /Projects</td><td class="num">32.4 MB</td><td class="sha">3ba6d682e190ae30a46fd55ffde474ea14d11145d5a82456404978b2fd886150</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/OpenTracker-2.2.5-Themes.zip">OpenTracker-2.2.5-Themes.zip</a></th><td>12 example colour themes, unzip to the card</td><td class="num">6.2 KB</td><td class="sha">cdb73eada8ca02e6f72017f0cfd934a4d81d7840b47861e1ee7052d6855f500d</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/PolyendTrackerOTv225.ptf">PolyendTrackerOTv225.ptf</a></th><td>Firmware image 2.2.5</td><td class="num">1.9 MB</td><td class="sha">d407a201cb3ee49df300435b529c39721803b101a35efc6e141fabc8dc9113ea</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/SHA256SUMS">SHA256SUMS</a></th><td>Checksums of every file in this release</td><td class="num">474 B</td><td class="sha">&mdash;</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/OpenTracker-2.2.5-Manual.pdf">OpenTracker-2.2.5-Manual.pdf</a></th><td data-label="What it is">User manual for 2.2.5</td><td class="num" data-label="Size">30.4 MB</td><td class="sha" data-label="SHA256">469a375793092cdc2b464c1b9739d8ed8dc06855dc0c64fa6da7ed50edf7239c</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/OpenTracker-2.2.5-Patches.zip">OpenTracker-2.2.5-Patches.zip</a></th><td data-label="What it is">Preset pack: 82 patches (ACD, FAT, VAP, WTFM, PERC)</td><td class="num" data-label="Size">42.5 KB</td><td class="sha" data-label="SHA256">bd86a9d47a6c61a0b580609f5313ac6ed3ec1951e33169375bdb7fe2ea9449c6</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/OpenTracker-2.2.5-Projects.zip">OpenTracker-2.2.5-Projects.zip</a></th><td data-label="What it is">Test songs: copy to /Projects</td><td class="num" data-label="Size">32.4 MB</td><td class="sha" data-label="SHA256">3ba6d682e190ae30a46fd55ffde474ea14d11145d5a82456404978b2fd886150</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/OpenTracker-2.2.5-Themes.zip">OpenTracker-2.2.5-Themes.zip</a></th><td data-label="What it is">12 example colour themes, unzip to the card</td><td class="num" data-label="Size">6.2 KB</td><td class="sha" data-label="SHA256">cdb73eada8ca02e6f72017f0cfd934a4d81d7840b47861e1ee7052d6855f500d</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/PolyendTrackerOTv225.ptf">PolyendTrackerOTv225.ptf</a></th><td data-label="What it is">Firmware image 2.2.5</td><td class="num" data-label="Size">1.9 MB</td><td class="sha" data-label="SHA256">d407a201cb3ee49df300435b529c39721803b101a35efc6e141fabc8dc9113ea</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/SHA256SUMS">SHA256SUMS</a></th><td data-label="What it is">Checksums of every file in this release</td><td class="num" data-label="Size">474 B</td><td class="sha" data-label="SHA256">&mdash;</td></tr>
 </tbody></table></div>
-<!-- /GEN:assets-v2.2.5 -->
-      <details class="notes">
+      <details class="fold notes">
         <summary>Release notes 2.2.5</summary>
-        <div class="notes-body">
-<!-- GEN:notes-v2.2.5 -->
+        <div class="fold-body notes-body">
 <h3>OpenTracker 2.2.5</h3>
 <p>The current stable release of the 2.x line: an open, community firmware for the original Polyend Tracker. 2.x brings 16 tracks, three synth slots, stereo samples, Mini-format project files and USB Storage mode to the original hardware.</p>
 <p>OpenTracker is not affiliated with, endorsed by or supported by Polyend.</p>
@@ -121,33 +119,33 @@
 <li>USB Storage mode: back up the card before first use. Linux systems without a desktop may need <code>partprobe</code> or a re-plug to see the card.</li>
 <li>Projects saved by 2.x use 16-track patterns. Stock firmware reads only tracks 1-8 of those patterns.</li>
 </ul>
-<!-- /GEN:notes-v2.2.5 -->
         </div>
       </details>
     </section>
+<!-- /GEN:stable-release -->
 
     <section class="release" id="v3.0.0-preview" aria-labelledby="v3.0.0-preview-h">
       <div class="card-head"><h2 id="v3.0.0-preview-h">OpenTracker 3.0.0 preview</h2><span class="badge badge-preview">Preview</span><span class="tag">tag v3.0.0-preview</span></div>
       <p>A test build in four flavours. <a href="images.html">Pick your image</a> first: only one can be
       installed at a time.</p>
 <!-- GEN:assets-v3.0.0-preview -->
-<div class="table-wrap"><table>
+<div class="table-wrap"><table class="stack">
 <caption>Assets of release <code>v3.0.0-preview</code></caption>
 <thead><tr><th scope="col">File</th><th scope="col">What it is</th><th scope="col">Size</th><th scope="col">SHA256</th></tr></thead><tbody>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/Patches-classic-3.0.0.zip">Patches-classic-3.0.0.zip</a></th><td>Patches for the Classic image</td><td class="num">36.2 KB</td><td class="sha">3cb48cddc9e149edb5d9ab0eeb5eab16df48aecce552b3e70da661ac2257d280</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/Patches-idm-3.0.0.zip">Patches-idm-3.0.0.zip</a></th><td>Patches for the IDM image</td><td class="num">31.0 KB</td><td class="sha">898ad061ef409fa18c156956f1a4e52bdf2434761f3ca4a9174de4f1e5a3372c</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/Patches-retro-3.0.0.zip">Patches-retro-3.0.0.zip</a></th><td>Patches for the Retro image</td><td class="num">33.1 KB</td><td class="sha">13bc52e9901e8f2bdbd950eeafdcaada199bc21e8c1a8851d697551a06044014</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/Patches-techno-3.0.0.zip">Patches-techno-3.0.0.zip</a></th><td>Patches for the Techno image</td><td class="num">24.3 KB</td><td class="sha">5156846f37cfe63ea8b8321f2a9f5e1d55f2b4462a0788063ca12f4426f8ddeb</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/PolyendTrackerOTa300.ptf">PolyendTrackerOTa300.ptf</a></th><td>Classic image</td><td class="num">1.9 MB</td><td class="sha">6e1eef3911c433c8f361f8ef1c26b002c8e74f5ca77f6ff28a750c760236be54</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/PolyendTrackerOTi300.ptf">PolyendTrackerOTi300.ptf</a></th><td>IDM image</td><td class="num">2.0 MB</td><td class="sha">0564a3a307444252d053afde562f9cf3cc9b6a0f100bcf6676e3d3b246ab4e87</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/PolyendTrackerOTr300.ptf">PolyendTrackerOTr300.ptf</a></th><td>Retro image</td><td class="num">2.0 MB</td><td class="sha">3cd01f87905b3bfe21dd73ab096114a8ce9542c8c6dab69e9de2cd852ef6e106</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/PolyendTrackerOTt300.ptf">PolyendTrackerOTt300.ptf</a></th><td>Techno image</td><td class="num">1.9 MB</td><td class="sha">2dfeb8952e6bf2f2cea11ada6c81a8a235c09adbe757ac53ae7c30f54bc7b7f7</td></tr>
-<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/SHA256SUMS">SHA256SUMS</a></th><td>Checksums of every file in this release</td><td class="num">725 B</td><td class="sha">&mdash;</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/Patches-classic-3.0.0.zip">Patches-classic-3.0.0.zip</a></th><td data-label="What it is">Patches for the Classic image</td><td class="num" data-label="Size">36.2 KB</td><td class="sha" data-label="SHA256">3cb48cddc9e149edb5d9ab0eeb5eab16df48aecce552b3e70da661ac2257d280</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/Patches-idm-3.0.0.zip">Patches-idm-3.0.0.zip</a></th><td data-label="What it is">Patches for the IDM image</td><td class="num" data-label="Size">31.0 KB</td><td class="sha" data-label="SHA256">898ad061ef409fa18c156956f1a4e52bdf2434761f3ca4a9174de4f1e5a3372c</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/Patches-retro-3.0.0.zip">Patches-retro-3.0.0.zip</a></th><td data-label="What it is">Patches for the Retro image</td><td class="num" data-label="Size">33.1 KB</td><td class="sha" data-label="SHA256">13bc52e9901e8f2bdbd950eeafdcaada199bc21e8c1a8851d697551a06044014</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/Patches-techno-3.0.0.zip">Patches-techno-3.0.0.zip</a></th><td data-label="What it is">Patches for the Techno image</td><td class="num" data-label="Size">24.3 KB</td><td class="sha" data-label="SHA256">5156846f37cfe63ea8b8321f2a9f5e1d55f2b4462a0788063ca12f4426f8ddeb</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/PolyendTrackerOTa300.ptf">PolyendTrackerOTa300.ptf</a></th><td data-label="What it is">Classic image</td><td class="num" data-label="Size">1.9 MB</td><td class="sha" data-label="SHA256">6e1eef3911c433c8f361f8ef1c26b002c8e74f5ca77f6ff28a750c760236be54</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/PolyendTrackerOTi300.ptf">PolyendTrackerOTi300.ptf</a></th><td data-label="What it is">IDM image</td><td class="num" data-label="Size">2.0 MB</td><td class="sha" data-label="SHA256">0564a3a307444252d053afde562f9cf3cc9b6a0f100bcf6676e3d3b246ab4e87</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/PolyendTrackerOTr300.ptf">PolyendTrackerOTr300.ptf</a></th><td data-label="What it is">Retro image</td><td class="num" data-label="Size">2.0 MB</td><td class="sha" data-label="SHA256">3cd01f87905b3bfe21dd73ab096114a8ce9542c8c6dab69e9de2cd852ef6e106</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/PolyendTrackerOTt300.ptf">PolyendTrackerOTt300.ptf</a></th><td data-label="What it is">Techno image</td><td class="num" data-label="Size">1.9 MB</td><td class="sha" data-label="SHA256">2dfeb8952e6bf2f2cea11ada6c81a8a235c09adbe757ac53ae7c30f54bc7b7f7</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/SHA256SUMS">SHA256SUMS</a></th><td data-label="What it is">Checksums of every file in this release</td><td class="num" data-label="Size">725 B</td><td class="sha" data-label="SHA256">&mdash;</td></tr>
 </tbody></table></div>
 <!-- /GEN:assets-v3.0.0-preview -->
-      <details class="notes">
+      <details class="fold notes">
         <summary>Release notes 3.0.0 preview</summary>
-        <div class="notes-body">
+        <div class="fold-body notes-body">
 <!-- GEN:notes-v3.0.0-preview -->
 <h3>OpenTracker 3.0.0 preview</h3>
 <p>An early test build of OpenTracker 3, for testing only, not for real work. <strong>Back up your SD card first</strong>, or use a spare card.</p>
@@ -229,13 +227,15 @@
       use Load Patch on the Synth page.</p>
       <div class="grid two">
         <article class="panel">
-          <h3>For 2.2.5</h3>
+<!-- GEN:stable-packs -->
+<h3>For 2.2.5</h3>
           <p><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/OpenTracker-2.2.5-Patches.zip">OpenTracker-2.2.5-Patches.zip</a>:
           82 patches, ACD 12, FAT 8, VAP 16, WTFM 30 and PERC 16 kits (eight of them synthwave kits). Every
           patch has six named macros.</p>
           <h3>Themes for 2.2.5</h3>
           <p><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/OpenTracker-2.2.5-Themes.zip">OpenTracker-2.2.5-Themes.zip</a>:
           12 colour themes. Unzip to the root of the card, then pick one under Config &gt; General &gt; Display theme.</p>
+<!-- /GEN:stable-packs -->
         </article>
         <article class="panel">
           <h3>For the 3.0.0 preview</h3>
@@ -255,12 +255,14 @@
       <h2 id="manual-h">Manual</h2>
       <article class="panel">
         <h3>OpenTracker 2.x: what changed since 1.9.x</h3>
-        <p>The user manual for the 2.x line, for release 2.2.5: 16 tracks, the synth slots and engines,
+<!-- GEN:stable-manual -->
+<p>The user manual for the 2.x line, for release 2.2.5: 16 tracks, the synth slots and engines,
         stereo samples, USB Storage mode, live resampling, streaming from the card, themes, the Piano pad
         layout and more.</p>
         <div class="btn-row">
           <a class="btn primary" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v2.2.5/OpenTracker-2.2.5-Manual.pdf">Download the manual (PDF, 30.4 MB)</a>
         </div>
+<!-- /GEN:stable-manual -->
       </article>
     </section>
   </div>
@@ -270,6 +272,7 @@
 <footer class="site-foot">
   <div class="wrap">
     <div class="foot-grid">
+      <div class="foot-brand"><svg class="logo" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" focusable="false"><rect x="0" y="0" width="11" height="11" rx="2" class="l1"/><rect x="15" y="0" width="11" height="11" rx="2" class="l0"/><rect x="0" y="15" width="11" height="11" rx="2" class="l0"/><rect x="15" y="15" width="11" height="11" rx="2" class="l1"/></svg><span>OpenTracker</span></div>
       <div>
         <h2>Help</h2>
         <ul>
@@ -293,5 +296,6 @@
   </div>
 </footer>
 <!-- /GEN:footer -->
+<script src="assets/site.js" defer></script>
 </body>
 </html>

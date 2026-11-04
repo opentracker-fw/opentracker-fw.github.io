@@ -35,6 +35,10 @@ STABLE_TAG = "v2.2.5"
 STABLE_VERSION = "2.2.5"
 STABLE_IMAGE = "PolyendTrackerOTv225.ptf"
 STABLE_DATE = "2026-11-04"
+PREV_STABLE_TAG = "v2.2.4"
+# One or two sentences for downloads.html: what is new in the stable release (HTML).
+STABLE_NEWS = ("the <strong>Performance screen</strong> works as on stock, and its FX now reach "
+               "synth notes too.")
 PREVIEW_VERSION = "3.0.0 preview"
 FW_REPO = f"https://github.com/{ORG}/opentracker"
 PREVIEW_TAG = "v3.0.0-preview"
@@ -65,6 +69,23 @@ VIBE = {
     "nofm": "Every synth but the FM ones, with both drum synths.",
 }
 FEATURED = ["techno", "idm", "classic", "retro"]
+
+# A few words per flavour for the four cards above the fold on the home page.
+SHORT = {
+    "techno": "Drums, acid, drive and echo.",
+    "idm": "FM, wavetable FM and drums.",
+    "classic": "Analog-style synths.",
+    "retro": "Chip-style synths.",
+}
+
+# The motif: one 16-step pattern per flavour, four rows, drawn as small lit steps.
+# "x" a step, "-" holds the step before it (drawn as one long bar), "." empty.
+PATTERNS = {
+    "techno": ["x...x...x...x...", "..x...x...x...x.", "....x.......x...", "x.xx.x..x.x.xx.x"],
+    "idm": ["x..x.x....xx.x..", "...x..x.x......x", ".x....xxx..x....", "x.......x.x..x.x"],
+    "classic": ["x-------........", "....x-------x---", "x---x---x---x---", "........x-------"],
+    "retro": ["...x...x...x...x", "..x...x...x...x.", ".x...x...x...x..", "x...x...x...x..."],
+}
 
 # Per-flavour section on the home page: short feature cards and simulator screenshots
 # (assets/shots/*.png, 800x480, taken with the headless simulator built for that profile).
@@ -175,6 +196,8 @@ MODULES = {
                  desc="Tape on the whole mix: drive (saturation), head-loss high cut, wow, flutter and mix."),
     "CHOR": dict(name="Chorus", kind="effect", repo="fx", folder="modules/chorus", patches=None,
                  desc="Stereo chorus on the whole mix: rate, depth, width and mix."),
+    "BBDC": dict(name="BBD Chorus", kind="effect", repo="fx", folder="modules/bbd", patches=None,
+                 desc="Bucket-brigade style stereo chorus: Mode I, II or I+II, mix, width and tone."),
     "DIRT": dict(name="Dirt", kind="effect", repo="fx", folder="modules/dirt", patches=None,
                  desc="Drive and bitcrush on the whole mix: Soft, Hard, Fold and Asym shapers, Bits 4-16, sample-rate reduction, tone and mix."),
     "ECHO": dict(name="Echo", kind="effect", repo="fx", folder="modules/echo", patches=None,
@@ -193,18 +216,6 @@ ASSET_DESC = {
     "OpenTracker-2.2.5-Manual.pdf": "User manual for 2.2.5",
     "SHA256SUMS": "Checksums of every file in this release",
 }
-
-
-def _load_art():
-    import importlib.util
-    here = os.path.dirname(os.path.abspath(__file__))
-    spec = importlib.util.spec_from_file_location("ot_art", os.path.join(here, "art.py"))
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod.ART
-
-
-ART = _load_art()
 
 
 def esc(s):
@@ -264,7 +275,7 @@ def size_str(n):
 def asset_table(tag, rows, images):
     by_file = {i["file"]: f"{i['name']} image" for i in images}
     by_file.update({i["patches"]: f"Patches for the {i['name']} image" for i in images})
-    out = ['<div class="table-wrap"><table>',
+    out = ['<div class="table-wrap"><table class="stack">',
            f'<caption>Assets of release <code>{esc(tag)}</code></caption>',
            '<thead><tr><th scope="col">File</th><th scope="col">What it is</th>'
            '<th scope="col">Size</th><th scope="col">SHA256</th></tr></thead><tbody>']
@@ -274,8 +285,8 @@ def asset_table(tag, rows, images):
             what = "Tester zip: the images, all their patches and the README in one file"
         out.append(
             f'<tr><th scope="row"><a href="{DL}/{esc(tag)}/{esc(name)}">{esc(name)}</a></th>'
-            f'<td>{esc(what)}</td><td class="num">{size_str(size)}</td>'
-            f'<td class="sha">{esc(h) if h else "&mdash;"}</td></tr>')
+            f'<td data-label="What it is">{esc(what)}</td><td class="num" data-label="Size">{size_str(size)}</td>'
+            f'<td class="sha" data-label="SHA256">{esc(h) if h else "&mdash;"}</td></tr>')
     out.append("</tbody></table></div>")
     return "\n".join(out)
 
@@ -334,8 +345,46 @@ DL_ICON = ('<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" f
            'stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
 
-def chip_list(mids, cls):
-    return f'<ul class="chips {cls}">' + "".join(f"<li>{esc(MODULES[m]['name'])}</li>" for m in mids) + "</ul>"
+def steps_svg(rows, cls="steps", cell=6, gap=3):
+    """A pattern as a little step grid: lit steps as squares, held notes as one bar."""
+    cols = len(rows[0])
+    pitch = cell + gap
+    w, h = cols * pitch - gap, len(rows) * pitch - gap
+    off, on = [], []
+    for r, row in enumerate(rows):
+        y = r * pitch
+        c = 0
+        while c < cols:
+            n = 1
+            if row[c] == "x":
+                while c + n < cols and row[c + n] == "-":
+                    n += 1
+                on.append(f"M{c * pitch} {y}h{n * pitch - gap}v{cell}h-{n * pitch - gap}z")
+            else:
+                off.append(f"M{c * pitch} {y}h{cell}v{cell}h-{cell}z")
+            c += n
+    return (f'<svg class="{cls}" viewBox="0 0 {w} {h}" aria-hidden="true" focusable="false">'
+            f'<path class="s0" d="{"".join(off)}"/><path class="s1" d="{"".join(on)}"/></svg>')
+
+
+def hero_art():
+    """The hero motif: eight rows of 16 steps, the four flavour patterns two rows each,
+    lit steps flash as a playhead passes (CSS; still with reduced motion)."""
+    rows = []
+    for p in ("techno", "idm", "classic", "retro"):
+        rows += PATTERNS[p][:2] if p != "classic" else PATTERNS[p][1:3]
+    cell, gap = 20, 8
+    pitch = cell + gap
+    cols = 16
+    w, h = cols * pitch - gap, len(rows) * pitch - gap
+    out = [f'<rect class="ph" x="-4" y="-4" width="{cell + 8}" height="{h + 8}" rx="4"/>']
+    for r, row in enumerate(rows):
+        y = r * pitch
+        for c in range(cols):
+            cls = "s1" if row[c] == "x" else ("s2" if row[c] == "-" else "s0")
+            out.append(f'<rect class="{cls}" style="--c:{c}" x="{c * pitch}" y="{y}" width="{cell}" height="{cell}" rx="3"/>')
+    return (f'<svg class="hero-grid" viewBox="-4 -4 {w + 8} {h + 8}" aria-hidden="true" focusable="false">'
+            + "".join(out) + "</svg>")
 
 
 def file_html(fname, variant=None):
@@ -346,36 +395,58 @@ def file_html(fname, variant=None):
 
 
 def dl_button(url, label, fname, size, extra_cls="", variant=None):
-    return f'''<a class="dl-btn{extra_cls}" href="{url}">
+    return f'''<a class="dl{extra_cls}" href="{url}">
       <span class="dl-top">{DL_ICON} {label}</span>
       <span class="dl-file">{file_html(fname, variant)}</span>
       <span class="dl-meta">{size_str(size)} &middot; copy to <code>/Firmware</code>, keep the name</span>
     </a>'''
 
 
-def flavour_card(im, sizes, dates, compact=False, level=3):
+def mods(im, kind):
+    return [m for m in im["modules"] if MODULES[m]["kind"] == kind]
+
+
+def names(mids):
+    return ", ".join(esc(MODULES[m]["name"]) for m in mids)
+
+
+def hero_card(im):
+    """One of the four cards above the fold: letter, name, a few words, the motif."""
     p, v = im["profile"], im["variant"]
-    syn = [m for m in im["modules"] if MODULES[m]["kind"] == "synth"]
-    fx = [m for m in im["modules"] if MODULES[m]["kind"] == "effect"]
+    return f'''<li><a class="fcard" href="#get-{p}">
+  <span class="fcard-top"><span class="key" aria-hidden="true">{v}</span>{steps_svg(PATTERNS[p])}</span>
+  <span class="fcard-name">{esc(im["name"])}</span>
+  <span class="fcard-words">{esc(SHORT[p])}</span>
+</a></li>'''
+
+
+def hero_dl(sizes):
+    return f'''<a class="cta" href="{DL}/{STABLE_TAG}/{STABLE_IMAGE}">{DL_ICON}<span>Download {STABLE_VERSION}</span></a>
+        <p class="cta-meta">Stable &middot; <span class="mono">{STABLE_IMAGE}</span> &middot; {size_str(sizes[STABLE_IMAGE])}
+        &middot; <a href="#stable">What is in it</a></p>'''
+
+
+def flavour_card(im, sizes, dates, level=3):
+    """A flavour card for images.html (the picker lights these up)."""
+    p, v = im["profile"], im["variant"]
     url = f"{DL}/{PREVIEW_TAG}/{im['file']}"
     purl = f"{DL}/{PREVIEW_TAG}/{im['patches']}"
-    cls = "flav flav-" + p + (" flav-compact" if compact else "")
     hid = f"flav-{p}-h"
     src = (f' &middot;\n    <a href="{FW_REPO}/blob/3.x/reimpl/profiles/{p}.toml">source: profiles/{p}.toml</a>'
            if PUBLIC_REPOS else "")
-    return f'''<article class="{cls}" id="get-{p}" data-variant="{v}" aria-labelledby="{hid}">
-  <div class="flav-art">{ART[p]()}<span class="badge badge-preview">Preview 3.0.0</span></div>
-  <div class="flav-body">
-    <h{level} class="flav-name" id="{hid}"><span class="key flav-key" aria-hidden="true">{v}</span> {esc(im["name"])}</h{level}>
-    <p class="flav-vibe">{esc(VIBE[p])}</p>
-    <div class="flav-mods">
-      <span class="mods-label">Synths</span>{chip_list(syn, "chips-syn")}
-      <span class="mods-label">Effects</span>{chip_list(fx, "chips-fx")}
-    </div>
-    {dl_button(url, f"Download the {esc(im['name'])} image", im["file"], sizes[im["file"]], variant=v)}
-    <a class="flav-patch" href="{purl}">Patches: <span class="mono">{im["patches"]}</span> ({size_str(sizes[im["patches"]])})</a>
-    <p class="fw-meta"><span>{PREVIEW_VERSION}</span> &middot; <span>{dates.get(im["file"], "")}</span>{src}</p>
+    return f'''<article class="flav" id="get-{p}" data-variant="{v}" aria-labelledby="{hid}">
+  <div class="flav-head">
+    <h{level} class="flav-name" id="{hid}"><span class="key" aria-hidden="true">{v}</span> {esc(im["name"])}</h{level}>
+    {steps_svg(PATTERNS[p])}
   </div>
+  <p class="flav-vibe">{esc(VIBE[p])}</p>
+  <dl class="spec">
+    <dt>Synths</dt><dd>{names(mods(im, "synth"))}</dd>
+    <dt>Effects</dt><dd>{names(mods(im, "effect"))}</dd>
+  </dl>
+  {dl_button(url, f"Download the {esc(im['name'])} image", im["file"], sizes[im["file"]], variant=v)}
+  <p class="flav-patch"><a href="{purl}">Patches: <span class="mono">{im["patches"]}</span></a> ({size_str(sizes[im["patches"]])})</p>
+  <p class="fw-meta">{PREVIEW_VERSION} &middot; {dates.get(im["file"], "")}{src}</p>
 </article>'''
 
 
@@ -385,52 +456,130 @@ def stable_card(sizes):
     def f(n):
         return f"{DL}/{STABLE_TAG}/{n}"
     files = [
-        (f"OpenTracker-{v}-Patches.zip", "Patches", "", "82 patches"),
-        (f"OpenTracker-{v}-Themes.zip", "Themes", '', "12 colour themes"),
-        (f"OpenTracker-{v}-Projects.zip", "Test songs", "", "copy to /Projects"),
-        (f"OpenTracker-{v}-Manual.pdf", "Manual (PDF)", "", "the 2.x user manual"),
+        (f"OpenTracker-{v}-Patches.zip", "Patches", "82 patches"),
+        (f"OpenTracker-{v}-Themes.zip", "Themes", "12 colour themes"),
+        (f"OpenTracker-{v}-Projects.zip", "Test songs", "copy to /Projects"),
+        (f"OpenTracker-{v}-Manual.pdf", "Manual (PDF)", "the 2.x user manual"),
     ]
     src = f' &middot;\n    <a href="{FW_REPO}/tree/2.x">source: branch 2.x</a>' if PUBLIC_REPOS else ""
-    lis = "".join(f'<li><a href="{f(n)}">{label}</a>{extra} <span class="meta">{what}, {size_str(sizes[n])}</span></li>'
-                  for n, label, extra, what in files)
-    return f'''<article class="stable" aria-labelledby="stable-h">
-  <div class="stable-info">
-    <p class="stable-badges"><span class="badge badge-stable">Stable</span> <span class="badge badge-ver">2.x line</span></p>
-    <h3 id="stable-h">OpenTracker {v}</h3>
+    lis = "".join(f'<li><a href="{f(n)}">{label}</a> <span class="meta">{what}, {size_str(sizes[n])}</span></li>'
+                  for n, label, what in files)
+    return f'''<h2 id="stable-sec-h">OpenTracker {v}</h2>
+<div class="stable">
+  <div class="stable-text">
     <p>One image with all of the 2.x line: 16 tracks, five synth engines (ACD, FAT, VAP, WTFM, PERC),
     stereo samples, Mini-format projects, USB Storage mode, live resampling, streaming from the card and
     colour themes. <strong>Use this one for real work.</strong></p>
-    <ul class="stable-files">{lis}</ul>
-    <p class="btn-row"><a class="btn" href="{CONTRIBUTE}">Source on GitHub: fork it and contribute</a></p>
+    <p class="fw-meta">{v} &middot; {STABLE_DATE}{src}</p>
   </div>
   <div class="stable-dl">
-    {dl_button(f(STABLE_IMAGE), f"Download OpenTracker {v}", STABLE_IMAGE, sizes[STABLE_IMAGE], " dl-stable")}
-    <a class="flav-patch" href="downloads.html#{STABLE_TAG}">All files, checksums and release notes</a>
-    <p class="fw-meta"><span>{v}</span> &middot; <span>{STABLE_DATE}</span>{src}</p>
+    {dl_button(f(STABLE_IMAGE), f"Download OpenTracker {v}", STABLE_IMAGE, sizes[STABLE_IMAGE], " dl-main")}
   </div>
-</article>'''
+</div>
+<details class="fold">
+  <summary>Patches, themes, test songs and the manual</summary>
+  <div class="fold-body">
+    <ul class="files">{lis}</ul>
+    <p><a href="downloads.html#{STABLE_TAG}">All files, checksums and release notes</a> &middot;
+    <a href="{CONTRIBUTE}">Source on GitHub: fork it and contribute</a></p>
+  </div>
+</details>'''
 
 
-def flavour_sections(images):
+def stable_toc():
+    return f'<li><a href="#{STABLE_TAG}">{STABLE_VERSION} stable</a></li>'
+
+
+def stable_release(sums, images, notes_html):
+    """The stable release section of downloads.html: head, intro, assets and notes."""
+    t, v = STABLE_TAG, STABLE_VERSION
+    prev = PREV_STABLE_TAG.lstrip("v")
+    return f'''<section class="release" id="{t}" aria-labelledby="{t}-h">
+      <div class="card-head"><h2 id="{t}-h">OpenTracker {v}</h2><span class="badge badge-stable">Stable</span><span class="tag">tag {t}</span></div>
+      <p>The current stable release. Install <code>{STABLE_IMAGE}</code> as described on the
+      <a href="index.html#install">home page</a>. New in this release: {STABLE_NEWS}
+      The previous release, {prev}, stays on its <a href="https://github.com/{ORG}/{SITE_REPO}/releases/tag/{PREV_STABLE_TAG}">release page</a>.</p>
+      <p>The 2.x source is on GitHub: <a href="{CONTRIBUTE}">fork it and contribute</a>. Pull requests are welcome.</p>
+{asset_table(t, sums, images)}
+      <details class="fold notes">
+        <summary>Release notes {v}</summary>
+        <div class="fold-body notes-body">
+{notes_html}
+        </div>
+      </details>
+    </section>'''
+
+
+def stable_packs(sizes):
+    v = STABLE_VERSION
+    pz, tz = f"OpenTracker-{v}-Patches.zip", f"OpenTracker-{v}-Themes.zip"
+    return f'''<h3>For {v}</h3>
+          <p><a href="{DL}/{STABLE_TAG}/{pz}">{pz}</a>:
+          82 patches, ACD 12, FAT 8, VAP 16, WTFM 30 and PERC 16 kits (eight of them synthwave kits). Every
+          patch has six named macros.</p>
+          <h3>Themes for {v}</h3>
+          <p><a href="{DL}/{STABLE_TAG}/{tz}">{tz}</a>:
+          12 colour themes. Unzip to the root of the card, then pick one under Config &gt; General &gt; Display theme.</p>'''
+
+
+def stable_manual(sizes):
+    v = STABLE_VERSION
+    m = f"OpenTracker-{v}-Manual.pdf"
+    return f'''<p>The user manual for the 2.x line, for release {v}: 16 tracks, the synth slots and engines,
+        stereo samples, USB Storage mode, live resampling, streaming from the card, themes, the Piano pad
+        layout and more.</p>
+        <div class="btn-row">
+          <a class="btn primary" href="{DL}/{STABLE_TAG}/{m}">Download the manual (PDF, {size_str(sizes[m])})</a>
+        </div>'''
+
+
+def flavour_sections(images, sums, dates):
     out = []
+    sha = {n: h for rows in sums.values() for n, h, _ in rows}
+    size = {n: s for rows in sums.values() for n, _, s in rows}
     for p in FEATURED:
         im = next(i for i in images if i["profile"] == p)
-        feats = "".join(f'<div class="feat"><h4>{esc(h)}</h4><p>{esc(d)}</p></div>' for h, d in FEATURES[p])
+        v, fn, pz = im["variant"], im["file"], im["patches"]
+        feats = "".join(f'<li><strong>{esc(h)}</strong> {esc(d)}</li>' for h, d in FEATURES[p])
         shots = "".join(
-            f'<figure class="device"><div class="bezel"><div class="screen">'
-            f'<a href="assets/shots/{f}" title="Open at full size (800 x 480)"><img src="assets/shots/{f}" width="800" height="480" alt="{esc(c)}" loading="lazy"></a></div>'
-            f'<span class="bezel-led" aria-hidden="true"></span></div><figcaption>{esc(c)}</figcaption></figure>'
+            f'<figure class="shot"><a href="assets/shots/{f}" title="Open at full size (800 x 480)">'
+            f'<img src="assets/shots/{f}" width="800" height="480" alt="{esc(c)}" loading="lazy"></a>'
+            f'<figcaption>{esc(c)}</figcaption></figure>'
             for f, c in SHOTS.get(p, []))
-        shots_div = f'\n  <div class="shots">{shots}</div>' if shots else ""
-        out.append(f'''<section class="inside inside-{p}" id="inside-{p}" aria-labelledby="inside-{p}-h">
-  <div class="inside-head">
-    <span class="key flav-key" aria-hidden="true">{im["variant"]}</span>
-    <h3 id="inside-{p}-h">Inside {esc(im["name"])}</h3>
-    <p class="inside-tag">{esc(TAGLINE[p])}</p>
-    <a class="btn" href="#get-{p}">Get <span class="mono">{im["file"]}</span></a>
+        shots_div = (f'\n    <p class="meta">Screens from the OpenTracker simulator, running the same code as the firmware.</p>'
+                     f'\n    <div class="shots">{shots}</div>') if shots else ""
+        out.append(f'''<details class="flavour" id="get-{p}" data-variant="{v}">
+  <summary>
+    <span class="key" aria-hidden="true">{v}</span>
+    <h3 class="flavour-name">{esc(im["name"])}</h3>
+    <span class="flavour-vibe">{esc(VIBE[p])}</span>
+    {steps_svg(PATTERNS[p])}
+  </summary>
+  <div class="flavour-body" id="inside-{p}">
+    <p class="flavour-tag">{esc(TAGLINE[p])}</p>
+    <div class="flavour-grid">
+      <dl class="spec">
+        <dt>Synths</dt><dd>{names(mods(im, "synth"))}</dd>
+        <dt>Effects</dt><dd>{names(mods(im, "effect"))}</dd>
+        <dt>File</dt><dd><a href="{DL}/{PREVIEW_TAG}/{fn}" class="mono">{fn}</a> &middot; {size_str(size[fn])}</dd>
+        <dt>Patches</dt><dd><a href="{DL}/{PREVIEW_TAG}/{pz}" class="mono">{pz}</a> &middot; {size_str(size[pz])}</dd>
+        <dt>SHA256</dt><dd class="sha">{sha[fn]}</dd>
+        <dt>Build</dt><dd>{PREVIEW_VERSION} &middot; {dates.get(fn, "")} &middot; <a href="downloads.html#{PREVIEW_TAG}">all files</a></dd>
+      </dl>
+      <div class="flavour-get">
+        {dl_button(f"{DL}/{PREVIEW_TAG}/{fn}", f"Download {esc(im['name'])}", fn, size[fn], variant=v)}
+        <ol class="mini-steps">
+          <li>Back up your SD card.</li>
+          <li>Copy <code>{fn}</code> to <code>/Firmware</code>. Keep the name.</li>
+          <li>Copy <code>Patches</code> from <code>{pz}</code> to the root of the card and merge it.</li>
+          <li><kbd>Config</kbd> &gt; <kbd>Firmware update</kbd>, select the image, confirm.</li>
+        </ol>
+      </div>
+    </div>
+    <h4>Inside {esc(im["name"])}</h4>
+    <ul class="feats">{feats}</ul>{shots_div}
   </div>
-  <div class="feats">{feats}</div>{shots_div}
-</section>''')
+</details>''')
     return "\n".join(out)
 
 
@@ -488,24 +637,21 @@ def md_to_html(text, shift=1):
     return "\n".join(out)
 
 
+LOGO = ('<svg class="logo" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" focusable="false">'
+        '<rect x="0" y="0" width="11" height="11" rx="2" class="l1"/><rect x="15" y="0" width="11" height="11" rx="2" class="l0"/>'
+        '<rect x="0" y="15" width="11" height="11" rx="2" class="l0"/><rect x="15" y="15" width="11" height="11" rx="2" class="l1"/></svg>')
+
+
 def header(page):
-    items = [("index.html", "Home"), ("images.html", "3.0 images"),
-             ("modules.html", "Synths &amp; effects"), ("downloads.html", "Downloads")]
+    items = [("images.html", "3.0 images"), ("modules.html", "Synths &amp; effects"),
+             ("downloads.html", "Downloads")]
     nav = "".join(
         f'<li><a href="{href}"{" aria-current=\"page\"" if href == page else ""}>{label}</a></li>'
         for href, label in items)
     return f'''<a class="skip" href="#main">Skip to content</a>
-<div class="topbar"><div class="wrap">
-  <a href="index.html#flavours"><span class="badge badge-preview">3.0 preview</span> Techno &middot; IDM &middot; Classic &middot; Retro</a>
-  <span class="topbar-sep" aria-hidden="true">|</span>
-  <a href="index.html#stable"><span class="badge badge-stable">Stable</span> {STABLE_VERSION}</a>
-</div></div>
 <header class="site-head">
-  <div class="wrap">
-    <a class="brand" href="index.html" aria-label="OpenTracker home">
-      <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="6" fill="#15181b" stroke="#3d444c" stroke-width="2"/><rect x="6" y="7" width="4" height="4" rx="1" fill="#ffb22e"/><rect x="22" y="7" width="4" height="4" rx="1" fill="#36e0b8"/><rect x="14" y="14" width="4" height="4" rx="1" fill="#ffb22e"/><rect x="6" y="21" width="4" height="4" rx="1" fill="#36e0b8"/><rect x="22" y="21" width="4" height="4" rx="1" fill="#ffb22e"/></svg>
-      <span class="brand-name">Open<b>Tracker</b></span>
-    </a>
+  <div class="wrap head-in">
+    <a class="brand" href="index.html" aria-label="OpenTracker home"{" aria-current=\"page\"" if page == "index.html" else ""}>{LOGO}<span>OpenTracker</span></a>
     <nav class="nav" aria-label="Main"><ul>{nav}</ul></nav>
   </div>
 </header>'''
@@ -523,7 +669,8 @@ FOOTER_CODE = f'''
 
 FOOTER = f'''<footer class="site-foot">
   <div class="wrap">
-    <div class="foot-grid">{FOOTER_CODE}
+    <div class="foot-grid">
+      <div class="foot-brand">{LOGO}<span>OpenTracker</span></div>{FOOTER_CODE}
       <div>
         <h2>Help</h2>
         <ul>
@@ -552,7 +699,12 @@ def replace_block(text, name, content, fname):
     pat = re.compile(rf"(<!-- GEN:{re.escape(name)} -->)(.*?)(<!-- /GEN:{re.escape(name)} -->)", re.S)
     if not pat.search(text):
         sys.exit(f"{fname}: marker GEN:{name} missing")
-    return pat.sub(lambda m: m.group(1) + "\n" + content + "\n" + m.group(3), text)
+    nl = "" if name in INLINE else "\n"
+    return pat.sub(lambda m: m.group(1) + nl + content + nl + m.group(3), text)
+
+
+# Blocks that sit inside a line of text, written without the surrounding newlines.
+INLINE = {"stable-version"}
 
 
 def sha256(path):
@@ -644,10 +796,12 @@ def main():
             st = os.stat(os.path.join(a.assets, tag, n))
             dates[n] = __import__("datetime").date.fromtimestamp(st.st_mtime).isoformat()
     blocks = {
-        "flavour-hero": "\n".join(flavour_card(by_p[p], sizes, dates) for p in FEATURED),
-        "flavour-sections": flavour_sections(images),
+        "hero-dl": hero_dl(sizes),
+        "hero-art": hero_art(),
+        "flavour-hero": "\n".join(hero_card(by_p[p]) for p in FEATURED),
+        "flavour-sections": flavour_sections(images, sums, dates),
         "stable-card": stable_card(sizes),
-        "image-cards": "\n".join(flavour_card(by_p[p], sizes, dates, compact=True, level=2) for p in FEATURED),
+        "image-cards": "\n".join(flavour_card(by_p[p], sizes, dates, level=3) for p in FEATURED),
         "image-rows": image_rows(images),
         "synth-cards": module_cards(images, "synth"),
         "effect-cards": module_cards(images, "effect"),
@@ -655,6 +809,12 @@ def main():
         f"assets-{PREVIEW_TAG}": asset_table(PREVIEW_TAG, sums[PREVIEW_TAG], images),
         f"notes-{STABLE_TAG}": notes[STABLE_TAG],
         f"notes-{PREVIEW_TAG}": notes[PREVIEW_TAG],
+        "notes-stable": notes[STABLE_TAG],
+        "stable-version": STABLE_VERSION,
+        "stable-toc": stable_toc(),
+        "stable-release": stable_release(sums[STABLE_TAG], images, notes[STABLE_TAG]),
+        "stable-packs": stable_packs(sizes),
+        "stable-manual": stable_manual(sizes),
         "footer": FOOTER,
     }
     for page in ("index.html", "images.html", "modules.html", "downloads.html", "404.html"):
@@ -665,6 +825,10 @@ def main():
         for name, content in blocks.items():
             if f"<!-- GEN:{name} -->" in text:
                 text = replace_block(text, name, content, page)
+        # A marker no block fills (say, notes for an older tag) would keep stale text.
+        stale = set(re.findall(r"<!-- GEN:([\w.-]+) -->", text)) - set(blocks) - {"header"}
+        if stale:
+            sys.exit(f"{page}: no block for marker(s) {', '.join(sorted(stale))}")
         with open(p, "w") as f:
             f.write(text)
     print("ok:", ", ".join(i["name"] for i in images))
