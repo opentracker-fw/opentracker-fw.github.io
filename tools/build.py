@@ -31,10 +31,10 @@ REPO = {
     "fx": f"https://github.com/{ORG}/opentracker-fx/tree/main",
 }
 
-STABLE_TAG = "v2.2.4"
-STABLE_VERSION = "2.2.4"
-STABLE_IMAGE = "PolyendTrackerOTv224.ptf"
-STABLE_DATE = "2026-11-02"
+STABLE_TAG = "v2.2.5"
+STABLE_VERSION = "2.2.5"
+STABLE_IMAGE = "PolyendTrackerOTv225.ptf"
+STABLE_DATE = "2026-11-04"
 PREVIEW_VERSION = "3.0.0 preview"
 FW_REPO = f"https://github.com/{ORG}/opentracker"
 PREVIEW_TAG = "v3.0.0-preview"
@@ -186,11 +186,11 @@ MODULES = {
 }
 
 ASSET_DESC = {
-    "PolyendTrackerOTv224.ptf": "Firmware image 2.2.4",
-    "OpenTracker-2.2.4-Patches.zip": "Preset pack: 82 patches (ACD, FAT, VAP, WTFM, PERC)",
-    "OpenTracker-2.2.4-Projects.zip": "Test songs: copy to /Projects",
-    "OpenTracker-2.2.4-Themes.zip": "12 example colour themes, unzip to the card",
-    "OpenTracker-2.2.4-Manual.pdf": "User manual for 2.2.4",
+    "PolyendTrackerOTv225.ptf": "Firmware image 2.2.5",
+    "OpenTracker-2.2.5-Patches.zip": "Preset pack: 82 patches (ACD, FAT, VAP, WTFM, PERC)",
+    "OpenTracker-2.2.5-Projects.zip": "Test songs: copy to /Projects",
+    "OpenTracker-2.2.5-Themes.zip": "12 example colour themes, unzip to the card",
+    "OpenTracker-2.2.5-Manual.pdf": "User manual for 2.2.5",
     "SHA256SUMS": "Checksums of every file in this release",
 }
 
