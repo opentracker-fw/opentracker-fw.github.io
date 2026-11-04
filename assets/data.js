@@ -17,6 +17,8 @@ window.OT_DATA = {
         "DTY1",
         "CST1",
         "ATY1",
+        "DIRT",
+        "BBDC",
         "TAPE"
       ]
     },
@@ -33,7 +35,9 @@ window.OT_DATA = {
         "PRC1",
         "WTF1",
         "FM4S",
+        "DIRT",
         "CHOR",
+        "BBDC",
         "TAPE"
       ]
     },
@@ -51,6 +55,7 @@ window.OT_DATA = {
         "DTY1",
         "TTY1",
         "DIRT",
+        "BBDC",
         "ECHO",
         "TAPE"
       ]
@@ -70,6 +75,7 @@ window.OT_DATA = {
         "BTY1",
         "ARC1",
         "LOFI",
+        "BBDC",
         "ECHO",
         "TAPE"
       ]
@@ -159,6 +165,11 @@ window.OT_DATA = {
     {
       "id": "CHOR",
       "name": "Chorus",
+      "kind": "effect"
+    },
+    {
+      "id": "BBDC",
+      "name": "BBD Chorus",
       "kind": "effect"
     },
     {
