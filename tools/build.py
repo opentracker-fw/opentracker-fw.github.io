@@ -587,12 +587,13 @@ def md_inline(s):
     s = esc(s)
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
     s = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", s)
+    s = re.sub(r"(?<![\w*])\*([^*\s][^*]*?)\*(?![\w*])", r"<em>\1</em>", s)
     s = re.sub(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", r'<a href="\2">\1</a>', s)
     return s
 
 
 def md_to_html(text, shift=1):
-    """A tiny Markdown subset: headings, paragraphs, - lists, 1. lists, **bold**, `code`."""
+    """A tiny Markdown subset: headings, paragraphs, - lists, 1. lists, **bold**, *italic*, `code`."""
     out, para, lst = [], [], None
 
     def flush_para():

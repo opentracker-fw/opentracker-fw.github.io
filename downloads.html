@@ -94,10 +94,14 @@
 <ul>
 <li><strong>Performance screen as on stock</strong> (GitHub issue #86): tracks 1-16 start with their FX off; a red filled label means on. Low-pass, High-pass and Band-pass add their value to the instrument&#x27;s own cutoff, also when its filter is off or of another type.</li>
 <li><strong>Performance FX on synth notes</strong> (GitHub issue #23): on tracks whose FX are on, the filters move the synth&#x27;s own cutoff, and Panning, Delay send and Reverb send add to the note&#x27;s pan and sends. They follow the screen while a note sounds, also in its release.</li>
+<li><strong>Shorter Performance names</strong> (contributed by syamajala, PR #144): the FX that reach synth notes drop the &quot;Sample&quot; prefix: <em>Panning</em>, <em>LP cutoff</em>, <em>HP cutoff</em>, <em>BP cutoff</em>, <em>Delay send</em> and <em>Reverb send</em>. <em>Sample position</em>, <em>Sample end</em> and <em>Sample playback</em> keep it: they act on samples only.</li>
+<li><strong>Note names: Sharps / Flats / Auto</strong> (contributed by syamajala, PR #123): Config &gt; General &gt; Note names. <em>Sharps</em> (the default) shows C#5, <em>Flats</em> shows Db5, and <em>Auto</em> follows the project&#x27;s root note and scale, so F major shows Bb and G major shows F#. Display only: projects and MIDI are unchanged.</li>
 <li><strong>Synth release tails follow the Track Mixer:</strong> a synth note&#x27;s release follows the fader and mute of its track. Before, it played at full level, so tails of muted or lowered synth tracks are quieter in existing songs.</li>
-<li><strong>Sample Loader fixes:</strong> *Add next* on a folder does nothing, as its greyed label says. *Add* and *Add next* are greyed when the SD card cursor is on a folder. With *Preview* held, moving onto an empty instrument slot stops the sample.</li>
-<li><strong>Sample Playback, as on stock</strong> (GitHub issue #143): *Delete* puts Start back at the beginning, End at the end and Zoom back to 1. Loop points stay where they are.</li>
+<li><strong>Sample Loader fixes:</strong> <em>Add next</em> on a folder does nothing, as its greyed label says. <em>Add</em> and <em>Add next</em> are greyed when the SD card list has no files to add. With <em>Preview</em> held, moving onto an empty instrument slot stops the sample.</li>
+<li><strong>Sample Playback, as on stock</strong> (GitHub issue #143): <em>Delete</em> puts Start back at the beginning, End at the end and Zoom back to 1. Loop points stay where they are.</li>
 <li><strong>Master held + Jog</strong> (GitHub issue #142): after you set the master volume this way from another screen, letting go of Master returns to that screen.</li>
+<li><strong>Mouse wheel on synth On / Off rows</strong> (simulator and desktop app): in Edit Patch the wheel turns On / Off rows and a macro&#x27;s Off / On row the same way as other lists. Before, it ran backwards there.</li>
+<li><strong>More free memory</strong> for coming features (contributed by syamajala, PR #148): three buffers that are never used at the same time are shared, freeing about 5 KB.</li>
 </ul>
 <p>Thanks to the testers for their reports.</p>
 <h4>New in 2.2.4</h4>
