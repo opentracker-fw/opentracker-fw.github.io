@@ -170,7 +170,7 @@ MODULES = {
     "CST1": dict(name="CS-Type", kind="synth", repo="synths", folder="modules/cstype", patches=12,
                  desc="Polysynth in the style of the big two-layer polysynths of the late 1970s: two layers per note, each with its own "
                       "oscillators, filters and envelopes; ring modulator, Brilliance, Touch and Ribbon."),
-    "ATY1": dict(name="A-Type", kind="synth", repo="synths", folder="modules/atype", patches=12,
+    "ATY1": dict(name="A-Type", kind="synth", repo="synths", folder="modules/atype", patches=47,
                  desc="Two-oscillator synth in the style of the semi-modular duophonic synths of the 1970s: hard sync, ring modulator or noise, "
                       "sample & hold, 24 or 12 dB low-pass, Keyboard Duo and note priority."),
     "TTY1": dict(name="T-Type", kind="synth", repo="synths", folder="modules/ttype", patches=12,
