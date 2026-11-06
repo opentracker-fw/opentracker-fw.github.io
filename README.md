@@ -8,7 +8,7 @@ It is served by GitHub Pages from the root of the `main` branch, with no build s
   fonts, so they also work offline: open `index.html` from disk. No JavaScript is needed to read
   anything: the folded parts are `<details>`.
 - Binaries are not committed. They are attached to the GitHub Releases of this repository
-  (`v2.2.3`, `v2.2.4`, `v2.2.5`, `v3.0.0-preview`), and the pages link to
+  (`v2.2.3`, `v2.2.4`, `v2.2.5`, `v2.2.6`, `v3.0.0-preview`), and the pages link to
   `https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/<tag>/<file>`.
 
 ## Layout

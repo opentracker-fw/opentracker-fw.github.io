@@ -31,14 +31,14 @@ REPO = {
     "fx": f"https://github.com/{ORG}/opentracker-fx/tree/main",
 }
 
-STABLE_TAG = "v2.2.5"
-STABLE_VERSION = "2.2.5"
-STABLE_IMAGE = "PolyendTrackerOTv225.ptf"
-STABLE_DATE = "2026-11-04"
-PREV_STABLE_TAG = "v2.2.4"
+STABLE_TAG = "v2.2.6"
+STABLE_VERSION = "2.2.6"
+STABLE_IMAGE = "PolyendTrackerOTv226.ptf"
+STABLE_DATE = "2026-11-06"
+PREV_STABLE_TAG = "v2.2.5"
 # One or two sentences for downloads.html: what is new in the stable release (HTML).
-STABLE_NEWS = ("the <strong>Performance screen</strong> works as on stock, and its FX now reach "
-               "synth notes too.")
+STABLE_NEWS = ("<strong>one-finger pattern picking</strong> with a tap of F1, stereo radio recording, and float WAV files "
+               "that peak past full scale no longer play as noise.")
 PREVIEW_VERSION = "3.0.0 preview"
 FW_REPO = f"https://github.com/{ORG}/opentracker"
 PREVIEW_TAG = "v3.0.0-preview"
@@ -217,11 +217,11 @@ MODULES = {
 }
 
 ASSET_DESC = {
-    "PolyendTrackerOTv225.ptf": "Firmware image 2.2.5",
-    "OpenTracker-2.2.5-Patches.zip": "Preset pack: 82 patches (ACD, FAT, VAP, WTFM, PERC)",
-    "OpenTracker-2.2.5-Projects.zip": "Test songs: copy to /Projects",
-    "OpenTracker-2.2.5-Themes.zip": "12 example colour themes, unzip to the card",
-    "OpenTracker-2.2.5-Manual.pdf": "User manual for 2.2.5",
+    "PolyendTrackerOTv226.ptf": "Firmware image 2.2.6",
+    "OpenTracker-2.2.6-Patches.zip": "Preset pack: 82 patches (ACD, FAT, VAP, WTFM, PERC)",
+    "OpenTracker-2.2.6-Projects.zip": "Test songs: copy to /Projects",
+    "OpenTracker-2.2.6-Themes.zip": "12 example colour themes, unzip to the card",
+    "OpenTracker-2.2.6-Manual.pdf": "User manual for 2.2.6",
     "SHA256SUMS": "Checksums of every file in this release",
 }
 
