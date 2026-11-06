@@ -206,6 +206,14 @@ MODULES = {
     "LOFI": dict(name="LoFi", kind="effect", repo="fx", folder="modules/lofi", patches=None,
                  desc="The whole mix through a small chip's output: Bits 4-15, a sample-and-hold Rate down to 4 kHz, Ladder "
                       "(uneven DAC steps), Speaker (TV, Handheld, Monitor), Mono and mix."),
+    "PHSR": dict(name="Phaser", kind="effect", repo="fx", folder="modules/phaser", patches=None,
+                 desc="Synth insert: Classic (4 stages, a warm sweep that lingers low) or 80s (8 stages, deep and wide), "
+                      "rate, depth, feedback, stereo spread and mix."),
+    "TREM": dict(name="Tremolo", kind="effect", repo="fx", folder="modules/tremolo", patches=None,
+                 desc="Synth insert: level, pan (constant power) or both, rate 0.1-20 Hz, depth and shape (sine, triangle, "
+                      "square with soft edges)."),
+    "CRSH": dict(name="Bitcrush", kind="effect", repo="fx", folder="modules/bitcrush", patches=None,
+                 desc="Synth insert: hard or soft clip, crush from 16 down to 4 bits, sample-rate reduction (hold 1-32) and mix."),
 }
 
 ASSET_DESC = {

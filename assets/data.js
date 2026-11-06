@@ -19,7 +19,10 @@ window.OT_DATA = {
         "ATY1",
         "DIRT",
         "BBDC",
-        "TAPE"
+        "TAPE",
+        "PHSR",
+        "TREM",
+        "CRSH"
       ]
     },
     {
@@ -38,7 +41,8 @@ window.OT_DATA = {
         "DIRT",
         "CHOR",
         "BBDC",
-        "TAPE"
+        "TAPE",
+        "PHSR"
       ]
     },
     {
@@ -57,7 +61,8 @@ window.OT_DATA = {
         "DIRT",
         "BBDC",
         "ECHO",
-        "TAPE"
+        "TAPE",
+        "PHSR"
       ]
     },
     {
@@ -77,7 +82,8 @@ window.OT_DATA = {
         "LOFI",
         "BBDC",
         "ECHO",
-        "TAPE"
+        "TAPE",
+        "PHSR"
       ]
     }
   ],
@@ -185,6 +191,21 @@ window.OT_DATA = {
     {
       "id": "LOFI",
       "name": "LoFi",
+      "kind": "effect"
+    },
+    {
+      "id": "PHSR",
+      "name": "Phaser",
+      "kind": "effect"
+    },
+    {
+      "id": "TREM",
+      "name": "Tremolo",
+      "kind": "effect"
+    },
+    {
+      "id": "CRSH",
+      "name": "Bitcrush",
       "kind": "effect"
     }
   ]
