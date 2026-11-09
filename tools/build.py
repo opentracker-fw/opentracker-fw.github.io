@@ -222,6 +222,7 @@ ASSET_DESC = {
     "OpenTracker-2.2.6-Projects.zip": "Test songs: copy to /Projects",
     "OpenTracker-2.2.6-Themes.zip": "12 example colour themes, unzip to the card",
     "OpenTracker-2.2.6-Manual.pdf": "User manual for 2.2.6",
+    "OpenTracker-3.0.0-Manual.pdf": "User manual for 3.0: what changed since 2.x",
     "SHA256SUMS": "Checksums of every file in this release",
 }
 
