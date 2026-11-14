@@ -222,7 +222,10 @@ ASSET_DESC = {
     "OpenTracker-2.2.6-Projects.zip": "Test songs: copy to /Projects",
     "OpenTracker-2.2.6-Themes.zip": "12 example colour themes, unzip to the card",
     "OpenTracker-2.2.6-Manual.pdf": "User manual for 2.2.6",
-    "OpenTracker-3.0.0-Manual.pdf": "User manual for 3.0: what changed since 2.x",
+    "OpenTracker-3.0.0-Manual.pdf": "User manual for 3.0: what changed since 2.x, the Full image and its card synths",
+    "PolyendTrackerOTv300.ptf": "Full image: every synth, five built in and ten from the card",
+    "Modules-3.0.0.zip": "Card synths for the Full image: copy its Modules folder to the card",
+    "Patches-3.0.0.zip": "Patches for the Full image: all fifteen synths",
     "SHA256SUMS": "Checksums of every file in this release",
 }
 
@@ -686,6 +689,7 @@ FOOTER = f'''<footer class="site-foot">
         <ul>
           <li><a href="{ISSUES}">Report a bug or ask a question</a></li>
           <li><a href="index.html#install">How to install</a></li>
+          <li><a href="{DL}/{PREVIEW_TAG}/OpenTracker-3.0.0-Manual.pdf">3.0 manual (PDF)</a></li>
           <li><a href="downloads.html">All releases and checksums</a></li>
         </ul>
       </div>
