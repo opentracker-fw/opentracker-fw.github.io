@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenTracker 3</title>
+<meta name="description" content="OpenTracker 3.0 preview: one firmware for the original Polyend Tracker with every synth. Five built in, ten more from the SD card.">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Syne:wght@600;700;800&amp;display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/v3.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="index.html" aria-label="OpenTracker home"><svg class="logo" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" focusable="false"><rect x="0" y="0" width="11" height="11" rx="2" class="l1"/><rect x="15" y="0" width="11" height="11" rx="2" class="l0"/><rect x="0" y="15" width="11" height="11" rx="2" class="l0"/><rect x="15" y="15" width="11" height="11" rx="2" class="l1"/></svg><span>OpenTracker</span></a>
+    <nav class="nav" aria-label="Main"><ul><li><a href="v3.html" aria-current="page">3.0</a></li><li><a href="modules.html">Synths &amp; effects</a></li><li><a href="downloads.html">Downloads</a></li></ul></nav>
+  </div>
+</header>
+
+<main id="main" class="v3">
+
+  <!-- Hero -->
+  <section class="hero3">
+    <div class="wrap">
+      <div class="top"><span>OpenTracker 3.0</span><span>preview &middot; for testing</span><span>firmware for the original Polyend Tracker</span></div>
+      <h1>Every synth.<br><em>One</em> firmware.</h1>
+      <p class="lead3"><strong>Fifteen synth engines on one image.</strong> Five are built in. Ten more load from the SD card
+      when a song uses them, so you pick any synth on any slot and the firmware finds the room.</p>
+      <div class="cta3">
+        <a class="btn primary" href="#download">Download 3.0 preview</a>
+        <a class="btn" href="#synths">See the synths</a>
+      </div>
+
+      <figure class="device">
+        <div class="screen"><img src="assets/shots/pattern-editor.png" width="800" height="480" alt="The pattern editor: sixteen tracks of notes, instruments and effects."></div>
+        <figcaption><span>Pattern editor &middot; 800 &times; 480</span><span>simulator capture</span></figcaption>
+      </figure>
+
+      <dl class="specs">
+        <div><dt>15</dt><dd>synth engines</dd></div>
+        <div><dt>3</dt><dd>synth slots per song</dd></div>
+        <div><dt>8</dt><dd>presets, P1&ndash;P8, switched by Z</dd></div>
+        <div><dt>54&thinsp;KB</dt><dd>card memory for a song&rsquo;s card synths</dd></div>
+        <div><dt>1</dt><dd>image</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Synths -->
+  <section id="synths" aria-labelledby="synths-h">
+    <div class="wrap">
+      <p class="label"><b>01</b> Synths</p>
+      <div class="shead">
+        <h2 id="synths-h">Fifteen engines.</h2>
+        <p>Acid, poly pads, three-oscillator monos, FM, two drum machines and four chip voices. Every engine has
+        its own pages on the Synth screen and its own patches.</p>
+      </div>
+
+      <ul class="filters" aria-label="Show synths">
+        <li><button type="button" data-f="all" aria-pressed="true">All</button></li>
+        <li><button type="button" data-f="analog" aria-pressed="false">Analog</button></li>
+        <li><button type="button" data-f="fm" aria-pressed="false">FM</button></li>
+        <li><button type="button" data-f="drums" aria-pressed="false">Drums</button></li>
+        <li><button type="button" data-f="chip" aria-pressed="false">Chip</button></li>
+        <li><button type="button" data-f="card" aria-pressed="false">From the card</button></li>
+      </ul>
+
+      <div class="units">
+        <article class="unit fam-analog" data-f="analog in">
+          <div class="no"><span>01 &middot; ACD1</span><span class="dot"></span></div>
+          <h3>ACD</h3>
+          <p>Acid bass and lead: 24&nbsp;dB and ladder-style filters, glide, mono or poly.</p>
+          <div class="foot"><span class="chip3 in">built in</span><span class="chip3">12 patches</span></div>
+        </article>
+        <article class="unit fam-analog" data-f="analog in">
+          <div class="no"><span>02 &middot; FAT1</span><span class="dot"></span></div>
+          <h3>FAT</h3>
+          <p>A stack of detuned saws for supersaw pads, leads and basses.</p>
+          <div class="foot"><span class="chip3 in">built in</span><span class="chip3">8 patches</span></div>
+        </article>
+        <article class="unit fam-analog" data-f="analog in">
+          <div class="no"><span>03 &middot; VAP1</span><span class="dot"></span></div>
+          <h3>VAP</h3>
+          <p>Virtual-analog poly: morphing oscillators, hard sync, 15 filter types, a 6-slot mod matrix.</p>
+          <div class="foot"><span class="chip3 in">built in</span><span class="chip3">16 patches</span></div>
+        </article>
+        <article class="unit fam-drums" data-f="drums in">
+          <div class="no"><span>04 &middot; PRC1</span><span class="dot"></span></div>
+          <h3>PERC</h3>
+          <p>One drum per note: kick, snare, hats, cymbal, perc and tunable toms.</p>
+          <div class="foot"><span class="chip3 in">built in</span><span class="chip3">16 patches</span></div>
+        </article>
+        <article class="unit fam-fm" data-f="fm in">
+          <div class="no"><span>05 &middot; WTF1</span><span class="dot"></span></div>
+          <h3>WTFM</h3>
+          <p>Two-operator wavetable FM: electric pianos, clav, bells, mallets, basses, pads.</p>
+          <div class="foot"><span class="chip3 in">built in</span><span class="chip3">30 patches</span></div>
+        </article>
+        <article class="unit fam-analog" data-f="analog card">
+          <div class="no"><span>06 &middot; JU6S</span><span class="dot"></span></div>
+          <h3>JU6</h3>
+          <p>Early-80s style poly: saw and pulse with PWM, sub, 24&nbsp;dB low-pass and its own chorus I, II.</p>
+          <div class="foot"><span class="chip3 card">card &middot; 9.6 KB</span><span class="chip3">12 patches</span></div>
+        </article>
+        <article class="unit fam-analog" data-f="analog card">
+          <div class="no"><span>07 &middot; DTY1</span><span class="dot"></span></div>
+          <h3>D-Type</h3>
+          <p>Three-oscillator mono in the 1970s style: noise, mixer feedback, a self-oscillating 24&nbsp;dB low-pass.</p>
+          <div class="foot"><span class="chip3 card">card &middot; 11.2 KB</span><span class="chip3">12 patches</span></div>
+        </article>
+        <article class="unit fam-analog" data-f="analog card">
+          <div class="no"><span>08 &middot; CST1</span><span class="dot"></span></div>
+          <h3>CS-Type</h3>
+          <p>Big two-layer poly: two full voices per note, ring modulator, Brilliance, Touch and Ribbon.</p>
+          <div class="foot"><span class="chip3 card">card &middot; 13.0 KB</span><span class="chip3">12 patches</span></div>
+        </article>
+        <article class="unit fam-analog" data-f="analog card">
+          <div class="no"><span>09 &middot; ATY1</span><span class="dot"></span></div>
+          <h3>A-Type</h3>
+          <p>Semi-modular duophonic: hard sync, ring mod or noise, sample &amp; hold, Keyboard Duo.</p>
+          <div class="foot"><span class="chip3 card">card &middot; 12.1 KB</span><span class="chip3">47 patches</span></div>
+        </article>
+        <article class="unit fam-fm" data-f="fm card">
+          <div class="no"><span>10 &middot; FM4S</span><span class="dot"></span></div>
+          <h3>FM4</h3>
+          <p>Four-operator FM: 8 algorithms, feedback, an envelope per operator, an LFO.</p>
+          <div class="foot"><span class="chip3 card">card &middot; 9.9 KB</span><span class="chip3">start from Init</span></div>
+        </article>
+        <article class="unit fam-drums" data-f="drums card">
+          <div class="no"><span>11 &middot; TTY1</span><span class="dot"></span></div>
+          <h3>T-Type</h3>
+          <p>Analog drum machine: one patch is a kit of twelve drums, three Characters each.</p>
+          <div class="foot"><span class="chip3 card">card &middot; 15.8 KB</span><span class="chip3">12 kits</span></div>
+        </article>
+        <article class="unit fam-chip" data-f="chip card">
+          <div class="no"><span>12 &middot; 8TY1</span><span class="dot"></span></div>
+          <h3>8-Type</h3>
+          <p>Early-80s home computer chip: three oscillators, ring and sync, a 12&nbsp;dB multimode filter.</p>
+          <div class="foot"><span class="chip3 card">card &middot; 20.1 KB</span><span class="chip3">12 patches</span></div>
+        </article>
+        <article class="unit fam-chip" data-f="chip card">
+          <div class="no"><span>13 &middot; HND1</span><span class="dot"></span></div>
+          <h3>Hand-Type</h3>
+          <p>4-channel handheld chip: pulse with sweep, a 4-bit wave, noise, or a whole drum kit by note.</p>
+          <div class="foot"><span class="chip3 card">card &middot; 12.2 KB</span><span class="chip3">12 patches</span></div>
+        </article>
+        <article class="unit fam-chip" data-f="chip card">
+          <div class="no"><span>14 &middot; BTY1</span><span class="dot"></span></div>
+          <h3>B-Type</h3>
+          <p>Polynomial-counter chip: clock and divider tuning, buzz distortions, a 4-bit ADSR.</p>
+          <div class="foot"><span class="chip3 card">card &middot; 12.3 KB</span><span class="chip3">12 patches</span></div>
+        </article>
+        <article class="unit fam-chip" data-f="chip fm card">
+          <div class="no"><span>15 &middot; ARC1</span><span class="dot"></span></div>
+          <h3>Arc-Type</h3>
+          <p>Late-80s console FM: four operators, looping envelopes, a 9-bit DAC with ladder character.</p>
+          <div class="foot"><span class="chip3 card">card &middot; 18.5 KB</span><span class="chip3">12 patches</span></div>
+        </article>
+      </div>
+      <ul class="legend" aria-label="Families">
+        <li><span class="dot fam-analog"></span>Analog</li>
+        <li><span class="dot fam-fm"></span>FM</li>
+        <li><span class="dot fam-drums"></span>Drums</li>
+        <li><span class="dot fam-chip"></span>Chip</li>
+      </ul>
+      <div class="strip" aria-label="Synth pages">
+        <figure><img src="assets/shots/classic-dtype-edit.png" width="800" height="480" alt="D-Type edit page" loading="lazy"><figcaption>D-Type</figcaption></figure>
+        <figure><img src="assets/shots/classic-cstype-edit.png" width="800" height="480" alt="CS-Type edit page" loading="lazy"><figcaption>CS-Type</figcaption></figure>
+        <figure><img src="assets/shots/classic-atype-edit.png" width="800" height="480" alt="A-Type edit page" loading="lazy"><figcaption>A-Type</figcaption></figure>
+        <figure><img src="assets/shots/techno-ttype-edit.png" width="800" height="480" alt="T-Type edit page" loading="lazy"><figcaption>T-Type</figcaption></figure>
+        <figure><img src="assets/shots/retro-eight-edit.png" width="800" height="480" alt="8-Type edit page" loading="lazy"><figcaption>8-Type</figcaption></figure>
+        <figure><img src="assets/shots/retro-arc-edit.png" width="800" height="480" alt="Arc-Type edit page" loading="lazy"><figcaption>Arc-Type</figcaption></figure>
+        <figure><img src="assets/shots/retro-hand-edit.png" width="800" height="480" alt="Hand-Type edit page" loading="lazy"><figcaption>Hand-Type</figcaption></figure>
+        <figure><img src="assets/shots/idm-fm4-edit.png" width="800" height="480" alt="FM4 edit page" loading="lazy"><figcaption>FM4</figcaption></figure>
+        <figure><img src="assets/shots/idm-wtfm-edit.png" width="800" height="480" alt="WTFM edit page" loading="lazy"><figcaption>WTFM</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Card memory -->
+  <section id="memory" aria-labelledby="memory-h">
+    <div class="wrap">
+      <p class="label"><b>02</b> Card memory</p>
+      <div class="shead">
+        <h2 id="memory-h">Load what the song plays.</h2>
+        <p>A song&rsquo;s card synths share about 54&nbsp;KB. Open a project and the synths its three slots and eight
+        presets name load from <code>Modules/</code>; the rest stay on the card. Any three card synths fit on the slots.</p>
+      </div>
+
+      <figure class="mem" aria-labelledby="mem-cap">
+        <div class="scale"><span>0</span><span id="mem-cap">Example: a song with D-Type, A-Type, CS-Type and JU6</span><span>54.6 KB</span></div>
+        <div class="bar" role="img" aria-label="D-Type 11.2 KB, A-Type 12.1 KB, CS-Type 13.0 KB, JU6 9.6 KB, 8.8 KB free of 54.6 KB.">
+          <span class="fam-analog" style="flex: 11.2">D-Type</span>
+          <span class="fam-analog" style="flex: 12.1; filter: brightness(.88)">A-Type</span>
+          <span class="fam-analog" style="flex: 13.0">CS-Type</span>
+          <span class="fam-analog" style="flex: 9.6; filter: brightness(.88)">JU6</span>
+          <span class="free" style="flex: 8.8">free</span>
+        </div>
+        <ul class="rows">
+          <li><span>D-Type</span><span>11.2 KB</span></li>
+          <li><span>A-Type</span><span>12.1 KB</span></li>
+          <li><span>CS-Type</span><span>13.0 KB</span></li>
+          <li><span>JU6</span><span>9.6 KB</span></li>
+          <li><span>free</span><span>8.8 KB</span></li>
+        </ul>
+      </figure>
+
+      <div class="notes3">
+        <div><h3>Pick, then wait a beat</h3><p>Stopped, a card synth loads a quarter of a second after the model
+        choice rests, and the slot gets its Init patch. While playing, the slot says <em>Loads at Stop</em>.</p></div>
+        <div><h3>Slots first</h3><p>When a song asks for more than fits, the slots get the room before the presets.
+        A synth that doesn&rsquo;t fit says <em>Card memory full</em>.</p></div>
+        <div><h3>Built in is free</h3><p>ACD, FAT, VAP, PERC and WTFM are part of the image and never use card memory.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Effects -->
+  <section id="effects" aria-labelledby="effects-h">
+    <div class="wrap">
+      <p class="label"><b>03</b> Effects</p>
+      <div class="shead">
+        <h2 id="effects-h">On the whole mix.</h2>
+        <p>Master effects have their own pages next to the Master screen (<kbd>Shift</kbd> + <kbd>Master</kbd>). They start Off.</p>
+      </div>
+      <div class="fx3">
+        <article><div class="no meta mono">TAPE</div><h3>Tape</h3><p>Drive, head-loss high cut, wow, flutter and mix.</p></article>
+        <article><div class="no meta mono">BBDC</div><h3>BBD Chorus</h3><p>Bucket-brigade stereo chorus: Mode I, II or I+II, width and tone.</p></article>
+        <article><div class="no meta mono">CHOR</div><h3>Chorus</h3><p>Stereo chorus: rate, depth, width and mix.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section id="install3" aria-labelledby="install-h">
+    <div class="wrap">
+      <p class="label"><b>04</b> Install</p>
+      <div class="shead">
+        <h2 id="install-h">Three folders.</h2>
+        <p>Back up your SD card first. This is a preview for testing, not for real work.</p>
+      </div>
+      <div class="install">
+        <ol class="steps3">
+          <li><div><h3>Firmware</h3><p>Copy <code>PolyendTrackerOTv300.ptf</code> to <code>Firmware/</code>, keep the name,
+          then Config &gt; Firmware update.</p></div></li>
+          <li><div><h3>Card synths</h3><p>Unzip <code>Modules-3.0.0.zip</code> at the root of the card. Leave out a synth you
+          never use; keep at most 16 files.</p></div></li>
+          <li><div><h3>Patches</h3><p>Unzip <code>Patches-3.0.0.zip</code> at the root of the card, then use Load Patch on the
+          Synth page.</p></div></li>
+        </ol>
+<pre class="tree" aria-label="The SD card after installing"><b>SD card/</b>
+├─ <b>Firmware/</b>
+│  └─ <i>PolyendTrackerOTv300.ptf</i>
+├─ <b>Modules/</b>
+│  ├─ <i>arc.otm</i>  <i>atype.otm</i>  <i>btype.otm</i>
+│  ├─ <i>cstype.otm</i>  <i>dtype.otm</i>  <i>eight.otm</i>
+│  └─ <i>fm4.otm</i>  <i>hand.otm</i>  <i>ju6.otm</i>  <i>ttype.otm</i>
+├─ <b>Patches/</b>
+│  └─ ACD/  ATYPE/  … one folder per synth
+└─ Projects/  Samples/  …</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section id="download" aria-labelledby="download-h">
+    <div class="wrap">
+      <p class="label"><b>05</b> Download</p>
+      <div class="shead">
+        <h2 id="download-h">3.0.0 preview.</h2>
+        <p>One image for every song. Checksums and release notes are on <a href="downloads.html#v3.0.0-preview">Downloads</a>.</p>
+      </div>
+      <div class="files">
+        <a class="row" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/PolyendTrackerOTv300.ptf">
+          <span class="k">Firmware</span><span class="n">PolyendTrackerOTv300.ptf</span><span class="s">2.1 MB</span><span class="go">&darr;</span></a>
+        <a class="row" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/Modules-3.0.0.zip">
+          <span class="k">Card synths</span><span class="n">Modules-3.0.0.zip</span><span class="s">85 KB</span><span class="go">&darr;</span></a>
+        <a class="row" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/Patches-3.0.0.zip">
+          <span class="k">Patches</span><span class="n">Patches-3.0.0.zip</span><span class="s">&mdash;</span><span class="go">&darr;</span></a>
+      </div>
+      <p class="fine">Going back: copy a 2.x image (from <a href="downloads.html">Downloads</a>) to <code>Firmware/</code> and
+      update. Your projects stay on the card.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><svg class="logo" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" focusable="false"><rect x="0" y="0" width="11" height="11" rx="2" class="l1"/><rect x="15" y="0" width="11" height="11" rx="2" class="l0"/><rect x="0" y="15" width="11" height="11" rx="2" class="l0"/><rect x="15" y="15" width="11" height="11" rx="2" class="l1"/></svg><span>OpenTracker</span></div>
+      <div>
+        <h2>Help</h2>
+        <ul>
+          <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/issues">Report a bug or ask a question</a></li>
+          <li><a href="index.html#install">How to install</a></li>
+          <li><a href="downloads.html">All releases and checksums</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <ul>
+          <li><a href="v3.html">OpenTracker 3.0</a></li>
+          <li><a href="modules.html">Synths &amp; effects</a></li>
+          <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io">Site source</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Synth filter: without JavaScript every synth shows.
+(function () {
+  var bs = document.querySelectorAll('.filters button');
+  var us = document.querySelectorAll('.unit');
+  bs.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-f');
+      bs.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      us.forEach(function (u) { u.hidden = f !== 'all' && u.getAttribute('data-f').split(' ').indexOf(f) < 0; });
+    });
+  });
+})();
+</script>
+</body>
+</html>
