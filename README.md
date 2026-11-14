@@ -15,7 +15,8 @@ It is served by GitHub Pages from the root of the `main` branch, with no build s
 
 | Path | What it is |
 |---|---|
-| `index.html` | home: the hero with the stable download and the four flavour cards; below, the stable release, one fold per 3.0 flavour (synths, effects, files, checksum, install steps, screens), release notes, the video and the install / recovery folds |
+| `index.html` | home: OpenTracker 3.0, one image with every synth (synths, card memory, effects, install, download); its header and footer are generated |
+| `2x.html` | the stable 2.x release and the four 3.0 flavours: the hero with the stable download and the four flavour cards; below, the stable release, one fold per 3.0 flavour (synths, effects, files, checksum, install steps, screens), release notes, the video and the install / recovery folds |
 | `images.html` | the 3.0 images and the synth / effect picker |
 | `modules.html` | one card per synth and effect module |
 | `downloads.html` | releases with assets, SHA256 values and release notes; patch packs; the manual |

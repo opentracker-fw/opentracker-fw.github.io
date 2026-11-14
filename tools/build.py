@@ -506,7 +506,7 @@ def stable_release(sums, images, notes_html):
     return f'''<section class="release" id="{t}" aria-labelledby="{t}-h">
       <div class="card-head"><h2 id="{t}-h">OpenTracker {v}</h2><span class="badge badge-stable">Stable</span><span class="tag">tag {t}</span></div>
       <p>The current stable release. Install <code>{STABLE_IMAGE}</code> as described on the
-      <a href="index.html#install">home page</a>. New in this release: {STABLE_NEWS}
+      <a href="2x.html#install">2.x page</a>. New in this release: {STABLE_NEWS}
       The previous release, {prev}, stays on its <a href="https://github.com/{ORG}/{SITE_REPO}/releases/tag/{PREV_STABLE_TAG}">release page</a>.</p>
       <p>The 2.x source is on GitHub: <a href="{CONTRIBUTE}">fork it and contribute</a>. Pull requests are welcome.</p>
 {asset_table(t, sums, images)}
@@ -653,8 +653,8 @@ LOGO = ('<svg class="logo" width="26" height="26" viewBox="0 0 26 26" aria-hidde
 
 
 def header(page):
-    items = [("images.html", "3.0 images"), ("modules.html", "Synths &amp; effects"),
-             ("downloads.html", "Downloads")]
+    items = [("2x.html", "2.x"), ("images.html", "Flavours"),
+             ("modules.html", "Synths &amp; effects"), ("downloads.html", "Downloads")]
     nav = "".join(
         f'<li><a href="{href}"{" aria-current=\"page\"" if href == page else ""}>{label}</a></li>'
         for href, label in items)
@@ -692,7 +692,8 @@ FOOTER = f'''<footer class="site-foot">
       <div>
         <h2>Site</h2>
         <ul>
-          <li><a href="images.html">Pick a 3.0 image</a></li>
+          <li><a href="2x.html">2.x stable</a></li>
+          <li><a href="images.html">3.0 flavours</a></li>
           <li><a href="modules.html">Synths &amp; effects</a></li>
           <li><a href="https://github.com/{ORG}/{SITE_REPO}">Site source</a></li>
         </ul>
@@ -827,7 +828,7 @@ def main():
         "stable-manual": stable_manual(sizes),
         "footer": FOOTER,
     }
-    for page in ("index.html", "images.html", "modules.html", "downloads.html", "404.html"):
+    for page in ("index.html", "2x.html", "images.html", "modules.html", "downloads.html", "404.html"):
         p = os.path.join(root, page)
         with open(p) as f:
             text = f.read()
