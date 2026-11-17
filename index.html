@@ -36,9 +36,9 @@
       <p class="lead3"><strong>Fifteen synth engines on one image.</strong> Five are built in. Ten more load from the SD card
       when a song uses them, so you pick any synth on any slot and the firmware finds the room.</p>
       <div class="cta3">
-        <a class="btn primary" href="#download">Download 3.0 preview</a>
+        <a class="btn primary" href="#download">Download 3.0 preview 2</a>
         <a class="btn" href="#synths">See the synths</a>
-        <a class="btn" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/OpenTracker-3.0.0-Manual.pdf">Read the manual</a>
+        <a class="btn" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview2/OpenTracker-3.0.0-Manual.pdf">Read the manual</a>
       </div>
 
       <figure class="device">
@@ -193,8 +193,9 @@
       <p class="label"><b>02</b> Card memory</p>
       <div class="shead">
         <h2 id="memory-h">Load what the song plays.</h2>
-        <p>A song&rsquo;s card synths share about 54&nbsp;KB. Open a project and the synths its three slots and eight
-        presets name load from <code>Modules/</code>; the rest stay on the card. Any three card synths fit on the slots.</p>
+        <p>A song&rsquo;s card synths and card effects share about 54&nbsp;KB. Open a project and the synths its three
+        slots and eight presets name load from <code>Modules/</code>; the rest stay on the card. Any three card synths fit
+        on the slots.</p>
       </div>
 
       <figure class="mem" aria-labelledby="mem-cap">
@@ -231,13 +232,20 @@
       <p class="label"><b>03</b> Effects</p>
       <div class="shead">
         <h2 id="effects-h">On the whole mix.</h2>
-        <p>Master effects have their own pages next to the Master screen (<kbd>Shift</kbd> + <kbd>Master</kbd>). They start Off.</p>
+        <p><kbd>Shift</kbd> + <kbd>Master</kbd> opens the FX bank: every master effect in the order the mix runs
+        through them. <kbd>F1</kbd> turns one on or off, <kbd>F2</kbd> opens its settings. Card effects load while
+        they are on; Echo&rsquo;s delay line takes 48&nbsp;KB of the sample memory while it is loaded.</p>
       </div>
       <div class="fx3">
-        <article><div class="no meta mono">TAPE</div><h3>Tape</h3><p>Drive, head-loss high cut, wow, flutter and mix.</p></article>
-        <article><div class="no meta mono">BBDC</div><h3>BBD Chorus</h3><p>Bucket-brigade stereo chorus: Mode I, II or I+II, width and tone.</p></article>
-        <article><div class="no meta mono">CHOR</div><h3>Chorus</h3><p>Stereo chorus: rate, depth, width and mix.</p></article>
+        <article><div class="no meta mono">DIRT</div><h3>Dirt</h3><p>Drive and bitcrush: Soft, Hard, Fold and Asym, bits, rate, tone and mix.</p><div class="foot"><span class="chip3 in">built in</span></div></article>
+        <article><div class="no meta mono">LOFI</div><h3>LoFi</h3><p>The mix through a small chip&rsquo;s output: bits, rate, ladder, speaker, mono and mix.</p><div class="foot"><span class="chip3 card">card &middot; 5.1 KB</span></div></article>
+        <article><div class="no meta mono">CHOR</div><h3>Chorus</h3><p>Stereo chorus: rate, depth, width and mix.</p><div class="foot"><span class="chip3 card">card &middot; 3.8 KB</span></div></article>
+        <article><div class="no meta mono">BBDC</div><h3>BBD Chorus</h3><p>Bucket-brigade stereo chorus: Mode I, II or I+II, width and tone.</p><div class="foot"><span class="chip3 in">built in</span></div></article>
+        <article><div class="no meta mono">ECHO</div><h3>Echo</h3><p>Dub-style echo in time with the song: 1/32 to 1/2, dotted and triplet, ping-pong and duck.</p><div class="foot"><span class="chip3 card">card &middot; 5.2 KB</span></div></article>
+        <article><div class="no meta mono">TAPE</div><h3>Tape</h3><p>Drive, head-loss high cut, wow, flutter and mix.</p><div class="foot"><span class="chip3 in">built in</span></div></article>
       </div>
+      <p>Each synth slot also runs its own insert (<kbd>Shift</kbd> + Instrument Params): Drive, Chorus, Phaser,
+      Tremolo or Bitcrush, all built in.</p>
     </div>
   </section>
 
@@ -248,14 +256,14 @@
       <div class="shead">
         <h2 id="install-h">Three folders.</h2>
         <p>Back up your SD card first. This is a preview for testing, not for real work.
-        Every step, and what changed since 2.x, is in the <a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/OpenTracker-3.0.0-Manual.pdf">manual (PDF)</a>.</p>
+        Every step, and what changed since 2.x, is in the <a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview2/OpenTracker-3.0.0-Manual.pdf">manual (PDF)</a>.</p>
       </div>
       <div class="install">
         <ol class="steps3">
           <li><div><h3>Firmware</h3><p>Copy <code>PolyendTrackerOTv300.ptf</code> to <code>Firmware/</code>, keep the name,
           then Config &gt; Firmware update.</p></div></li>
-          <li><div><h3>Card synths</h3><p>Unzip <code>Modules-3.0.0.zip</code> at the root of the card. Leave out a synth you
-          never use; keep at most 16 files.</p></div></li>
+          <li><div><h3>Card modules</h3><p>Unzip <code>Modules-3.0.0.zip</code> at the root of the card: ten synths and
+          three effects. Replace the files of an earlier preview. Leave out a module you never use.</p></div></li>
           <li><div><h3>Patches</h3><p>Unzip <code>Patches-3.0.0.zip</code> at the root of the card, then use Load Patch on the
           Synth page.</p></div></li>
         </ol>
@@ -265,7 +273,8 @@
 ├─ <b>Modules/</b>
 │  ├─ <i>arc.otm</i>  <i>atype.otm</i>  <i>btype.otm</i>
 │  ├─ <i>cstype.otm</i>  <i>dtype.otm</i>  <i>eight.otm</i>
-│  └─ <i>fm4.otm</i>  <i>hand.otm</i>  <i>ju6.otm</i>  <i>ttype.otm</i>
+│  ├─ <i>fm4.otm</i>  <i>hand.otm</i>  <i>ju6.otm</i>  <i>ttype.otm</i>
+│  └─ <i>chorus.otm</i>  <i>echo.otm</i>  <i>lofi.otm</i>
 ├─ <b>Patches/</b>
 │  └─ ACD/  ATYPE/  … one folder per synth
 └─ Projects/  Samples/  …</pre>
@@ -278,18 +287,18 @@
     <div class="wrap">
       <p class="label"><b>05</b> Download</p>
       <div class="shead">
-        <h2 id="download-h">3.0.0 preview.</h2>
-        <p>One image for every song. Checksums and release notes are on <a href="downloads.html#v3.0.0-preview">Downloads</a>.</p>
+        <h2 id="download-h">3.0.0 preview 2.</h2>
+        <p>One image for every song. Checksums and release notes are on <a href="downloads.html#v3.0.0-preview2">Downloads</a>.</p>
       </div>
       <div class="files">
-        <a class="row" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/PolyendTrackerOTv300.ptf">
+        <a class="row" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview2/PolyendTrackerOTv300.ptf">
           <span class="k">Firmware</span><span class="n">PolyendTrackerOTv300.ptf</span><span class="s">2.1 MB</span><span class="go">&darr;</span></a>
-        <a class="row" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/Modules-3.0.0.zip">
-          <span class="k">Card synths</span><span class="n">Modules-3.0.0.zip</span><span class="s">85 KB</span><span class="go">&darr;</span></a>
-        <a class="row" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/Patches-3.0.0.zip">
-          <span class="k">Patches</span><span class="n">Patches-3.0.0.zip</span><span class="s">104 KB</span><span class="go">&darr;</span></a>
-        <a class="row" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/OpenTracker-3.0.0-Manual.pdf">
-          <span class="k">Manual</span><span class="n">OpenTracker-3.0.0-Manual.pdf</span><span class="s">452 KB</span><span class="go">&darr;</span></a>
+        <a class="row" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview2/Modules-3.0.0.zip">
+          <span class="k">Card modules</span><span class="n">Modules-3.0.0.zip</span><span class="s">93 KB</span><span class="go">&darr;</span></a>
+        <a class="row" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview2/Patches-3.0.0.zip">
+          <span class="k">Patches</span><span class="n">Patches-3.0.0.zip</span><span class="s">114 KB</span><span class="go">&darr;</span></a>
+        <a class="row" href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview2/OpenTracker-3.0.0-Manual.pdf">
+          <span class="k">Manual</span><span class="n">OpenTracker-3.0.0-Manual.pdf</span><span class="s">451 KB</span><span class="go">&darr;</span></a>
       </div>
       <p class="fine">Going back: copy the <a href="2x.html">2.x stable</a> image to <code>Firmware/</code> and
       update. Your projects stay on the card.</p>
@@ -308,7 +317,7 @@
         <ul>
           <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/issues">Report a bug or ask a question</a></li>
           <li><a href="index.html#install">How to install</a></li>
-          <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview/OpenTracker-3.0.0-Manual.pdf">3.0 manual (PDF)</a></li>
+          <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview2/OpenTracker-3.0.0-Manual.pdf">3.0 manual (PDF)</a></li>
           <li><a href="downloads.html">All releases and checksums</a></li>
         </ul>
       </div>

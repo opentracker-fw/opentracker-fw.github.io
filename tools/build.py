@@ -31,17 +31,21 @@ REPO = {
     "fx": f"https://github.com/{ORG}/opentracker-fx/tree/main",
 }
 
-STABLE_TAG = "v2.2.6"
-STABLE_VERSION = "2.2.6"
-STABLE_IMAGE = "PolyendTrackerOTv226.ptf"
-STABLE_DATE = "2026-11-06"
-PREV_STABLE_TAG = "v2.2.5"
+STABLE_TAG = "v2.2.8"
+STABLE_VERSION = "2.2.8"
+STABLE_IMAGE = "PolyendTrackerOTv228.ptf"
+STABLE_DATE = "2026-11-16"
+PREV_STABLE_TAG = "v2.2.6"
 # One or two sentences for downloads.html: what is new in the stable release (HTML).
-STABLE_NEWS = ("<strong>one-finger pattern picking</strong> with a tap of F1, stereo radio recording, and float WAV files "
-               "that peak past full scale no longer play as noise.")
-PREVIEW_VERSION = "3.0.0 preview"
+STABLE_NEWS = ("<strong>synth presets and the Z FX</strong>, a new sample filter, faster opening of projects with "
+               "long streamed instruments, Play / Stop in the file browsers and fewer CPU overloads on heavy synth steps "
+               "(2.2.7 and 2.2.8).")
+PREVIEW_VERSION = "3.0.0 preview 2"
 FW_REPO = f"https://github.com/{ORG}/opentracker"
-PREVIEW_TAG = "v3.0.0-preview"
+PREVIEW_TAG = "v3.0.0-preview2"
+# The four flavour images stay on the first preview's release (preview 2 is the Full image only).
+FLAVOUR_TAG = "v3.0.0-preview"
+FLAVOUR_VERSION = "3.0.0 preview"
 
 # The firmware, synths and fx repos are private for now. While this is False the site
 # shows no links to them: no "Code" footer column, no module "Source" rows, no profile or
@@ -217,14 +221,14 @@ MODULES = {
 }
 
 ASSET_DESC = {
-    "PolyendTrackerOTv226.ptf": "Firmware image 2.2.6",
-    "OpenTracker-2.2.6-Patches.zip": "Preset pack: 82 patches (ACD, FAT, VAP, WTFM, PERC)",
-    "OpenTracker-2.2.6-Projects.zip": "Test songs: copy to /Projects",
-    "OpenTracker-2.2.6-Themes.zip": "12 example colour themes, unzip to the card",
-    "OpenTracker-2.2.6-Manual.pdf": "User manual for 2.2.6",
+    "PolyendTrackerOTv228.ptf": "Firmware image 2.2.8",
+    "OpenTracker-2.2.8-Patches.zip": "Preset pack: 82 patches (ACD, FAT, VAP, WTFM, PERC)",
+    "OpenTracker-2.2.8-Projects.zip": "Test songs: copy to /Projects",
+    "OpenTracker-2.2.8-Themes.zip": "12 example colour themes, unzip to the card",
+    "OpenTracker-2.2.8-Manual.pdf": "User manual for 2.2.8",
     "OpenTracker-3.0.0-Manual.pdf": "User manual for 3.0: what changed since 2.x, the Full image and its card synths",
     "PolyendTrackerOTv300.ptf": "Full image: every synth, five built in and ten from the card",
-    "Modules-3.0.0.zip": "Card synths for the Full image: copy its Modules folder to the card",
+    "Modules-3.0.0.zip": "Card synths and card effects for the Full image: copy its Modules folder to the card",
     "Patches-3.0.0.zip": "Patches for the Full image: all fifteen synths",
     "SHA256SUMS": "Checksums of every file in this release",
 }
@@ -311,11 +315,11 @@ def image_rows(images):
         out.append(
             f'<tr data-variant="{im["variant"]}" id="image-{im["profile"]}">'
             f'<th scope="row"><span class="key" aria-hidden="true">{im["variant"]}</span> {esc(im["name"])}</th>'
-            f'<td data-label="File"><a href="{DL}/{PREVIEW_TAG}/{im["file"]}"><code>{im["file"]}</code></a></td>'
+            f'<td data-label="File"><a href="{DL}/{FLAVOUR_TAG}/{im["file"]}"><code>{im["file"]}</code></a></td>'
             f'<td data-label="Synths">{esc(syn)}</td>'
             f'<td data-label="Effects">{esc(fx)}</td>'
             f'<td data-label="For">{esc(im["blurb"])}</td>'
-            f'<td data-label="Patches"><a href="{DL}/{PREVIEW_TAG}/{im["patches"]}">{im["patches"]}</a></td></tr>')
+            f'<td data-label="Patches"><a href="{DL}/{FLAVOUR_TAG}/{im["patches"]}">{im["patches"]}</a></td></tr>')
     return "\n".join(out)
 
 
@@ -441,8 +445,8 @@ def hero_dl(sizes):
 def flavour_card(im, sizes, dates, level=3):
     """A flavour card for images.html (the picker lights these up)."""
     p, v = im["profile"], im["variant"]
-    url = f"{DL}/{PREVIEW_TAG}/{im['file']}"
-    purl = f"{DL}/{PREVIEW_TAG}/{im['patches']}"
+    url = f"{DL}/{FLAVOUR_TAG}/{im['file']}"
+    purl = f"{DL}/{FLAVOUR_TAG}/{im['patches']}"
     hid = f"flav-{p}-h"
     src = (f' &middot;\n    <a href="{FW_REPO}/blob/3.x/reimpl/profiles/{p}.toml">source: profiles/{p}.toml</a>'
            if PUBLIC_REPOS else "")
@@ -458,7 +462,7 @@ def flavour_card(im, sizes, dates, level=3):
   </dl>
   {dl_button(url, f"Download the {esc(im['name'])} image", im["file"], sizes[im["file"]], variant=v)}
   <p class="flav-patch"><a href="{purl}">Patches: <span class="mono">{im["patches"]}</span></a> ({size_str(sizes[im["patches"]])})</p>
-  <p class="fw-meta">{PREVIEW_VERSION} &middot; {dates.get(im["file"], "")}{src}</p>
+  <p class="fw-meta">{FLAVOUR_VERSION} &middot; {dates.get(im["file"], "")}{src}</p>
 </article>'''
 
 
@@ -573,13 +577,13 @@ def flavour_sections(images, sums, dates):
       <dl class="spec">
         <dt>Synths</dt><dd>{names(mods(im, "synth"))}</dd>
         <dt>Effects</dt><dd>{names(mods(im, "effect"))}</dd>
-        <dt>File</dt><dd><a href="{DL}/{PREVIEW_TAG}/{fn}" class="mono">{fn}</a> &middot; {size_str(size[fn])}</dd>
-        <dt>Patches</dt><dd><a href="{DL}/{PREVIEW_TAG}/{pz}" class="mono">{pz}</a> &middot; {size_str(size[pz])}</dd>
+        <dt>File</dt><dd><a href="{DL}/{FLAVOUR_TAG}/{fn}" class="mono">{fn}</a> &middot; {size_str(size[fn])}</dd>
+        <dt>Patches</dt><dd><a href="{DL}/{FLAVOUR_TAG}/{pz}" class="mono">{pz}</a> &middot; {size_str(size[pz])}</dd>
         <dt>SHA256</dt><dd class="sha">{sha[fn]}</dd>
-        <dt>Build</dt><dd>{PREVIEW_VERSION} &middot; {dates.get(fn, "")} &middot; <a href="downloads.html#{PREVIEW_TAG}">all files</a></dd>
+        <dt>Build</dt><dd>{FLAVOUR_VERSION} &middot; {dates.get(fn, "")} &middot; <a href="downloads.html#{FLAVOUR_TAG}">all files</a></dd>
       </dl>
       <div class="flavour-get">
-        {dl_button(f"{DL}/{PREVIEW_TAG}/{fn}", f"Download {esc(im['name'])}", fn, size[fn], variant=v)}
+        {dl_button(f"{DL}/{FLAVOUR_TAG}/{fn}", f"Download {esc(im['name'])}", fn, size[fn], variant=v)}
         <ol class="mini-steps">
           <li>Back up your SD card.</li>
           <li>Copy <code>{fn}</code> to <code>/Firmware</code>. Keep the name.</li>
@@ -742,11 +746,11 @@ def check_sums(folder):
 
 
 def stage_preview(releases, assets, tester_zip=None):
-    """Copy the published 3.0 images and their patch zips into <assets>/<PREVIEW_TAG>/,
+    """Copy the published 3.0 images and their patch zips into <assets>/<FLAVOUR_TAG>/,
     renaming Patches.zip to Patches-<flavour>-3.0.0.zip, and write a fresh SHA256SUMS."""
     import shutil
     import zipfile
-    dest = os.path.join(assets, PREVIEW_TAG)
+    dest = os.path.join(assets, FLAVOUR_TAG)
     allowed = set()
     plan = []
     for variant, prof, _, _ in IMAGES:
@@ -798,15 +802,15 @@ def main():
         f.write("window.OT_DATA = " + json.dumps(data, indent=2) + ";\n")
 
     notes = {}
-    for tag in (STABLE_TAG, PREVIEW_TAG):
+    for tag in (STABLE_TAG, PREVIEW_TAG, FLAVOUR_TAG):
         with open(os.path.join(root, "notes", tag + ".md")) as f:
             notes[tag] = md_to_html(f.read(), shift=2)
 
-    sums = {tag: read_sums(a.assets, tag) for tag in (STABLE_TAG, PREVIEW_TAG)}
-    sizes = {n: s for rows in sums.values() for n, _, s in rows}
+    sums = {tag: read_sums(a.assets, tag) for tag in (STABLE_TAG, PREVIEW_TAG, FLAVOUR_TAG)}
+    sizes = {n: s for tag in (FLAVOUR_TAG, STABLE_TAG, PREVIEW_TAG) for n, _, s in sums[tag]}   # newest wins
     by_p = {i["profile"]: i for i in images}
     dates = {}
-    for tag in (STABLE_TAG, PREVIEW_TAG):
+    for tag in (FLAVOUR_TAG, STABLE_TAG, PREVIEW_TAG):   # a newer release's file wins
         for n, _, _ in sums[tag]:
             st = os.stat(os.path.join(a.assets, tag, n))
             dates[n] = __import__("datetime").date.fromtimestamp(st.st_mtime).isoformat()
@@ -824,6 +828,8 @@ def main():
         f"assets-{PREVIEW_TAG}": asset_table(PREVIEW_TAG, sums[PREVIEW_TAG], images),
         f"notes-{STABLE_TAG}": notes[STABLE_TAG],
         f"notes-{PREVIEW_TAG}": notes[PREVIEW_TAG],
+        f"assets-{FLAVOUR_TAG}": asset_table(FLAVOUR_TAG, sums[FLAVOUR_TAG], images),
+        f"notes-{FLAVOUR_TAG}": notes[FLAVOUR_TAG],
         "notes-stable": notes[STABLE_TAG],
         "stable-version": STABLE_VERSION,
         "stable-toc": stable_toc(),
