@@ -38,6 +38,7 @@
 <!-- GEN:stable-toc -->
 <li><a href="#v2.2.8">2.2.8 stable</a></li>
 <!-- /GEN:stable-toc -->
+        <li><a href="#v3.0.0-preview3">3.0.0 preview 3</a></li>
         <li><a href="#v3.0.0-preview2">3.0.0 preview 2</a></li>
         <li><a href="#v3.0.0-preview">3.0.0 preview</a></li>
         <li><a href="#patches">Patch packs</a></li>
@@ -142,6 +143,79 @@
       </details>
     </section>
 <!-- /GEN:stable-release -->
+
+    <section class="release" id="v3.0.0-preview3" aria-labelledby="v3.0.0-preview3-h">
+      <div class="card-head"><h2 id="v3.0.0-preview3-h">OpenTracker 3.0.0 preview 3</h2><span class="badge badge-preview">Preview</span><span class="tag">tag v3.0.0-preview3</span></div>
+      <p>Preview 2 plus two new card synths, 1-Type and V-Type: the Full image, its twelve card synths and three card effects, and the patches for all seventeen synths.</p>
+<!-- GEN:assets-v3.0.0-preview3 -->
+<div class="table-wrap"><table class="stack">
+<caption>Assets of release <code>v3.0.0-preview3</code></caption>
+<thead><tr><th scope="col">File</th><th scope="col">What it is</th><th scope="col">Size</th><th scope="col">SHA256</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview3/Modules-3.0.0.zip">Modules-3.0.0.zip</a></th><td data-label="What it is">Card synths and card effects for the Full image (twelve synths, three effects): copy its Modules folder to the card</td><td class="num" data-label="Size">126.2 KB</td><td class="sha" data-label="SHA256">956978a53b2f19d445bf64c5f6c7869bbc1beaabcf33432222f41e557244e047</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview3/OpenTracker-3.0.0-Manual.pdf">OpenTracker-3.0.0-Manual.pdf</a></th><td data-label="What it is">User manual for 3.0: what changed since 2.x, the Full image, its card synths, 1-Type and V-Type</td><td class="num" data-label="Size">476.1 KB</td><td class="sha" data-label="SHA256">c8257a9287bf29bad053afa40059b3fab515f343d533501360e189ea5a6faf97</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview3/Patches-3.0.0.zip">Patches-3.0.0.zip</a></th><td data-label="What it is">Patches for the Full image: 261 patches for all seventeen synths</td><td class="num" data-label="Size">130.0 KB</td><td class="sha" data-label="SHA256">1b463eae9a29da6992724bbcdd051e7ec50b73599377cbab995b1a39d468d89f</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview3/PolyendTrackerOTv300.ptf">PolyendTrackerOTv300.ptf</a></th><td data-label="What it is">Full image: every synth, five built in and twelve from the card</td><td class="num" data-label="Size">2.2 MB</td><td class="sha" data-label="SHA256">a9bb24e1c27c0da10cfd04adb36c09ae6ea789d7cdcb2fe1ce74c93b9e284603</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview3/SHA256SUMS">SHA256SUMS</a></th><td data-label="What it is">Checksums of every file in this release</td><td class="num" data-label="Size">354 B</td><td class="sha" data-label="SHA256">&mdash;</td></tr>
+</tbody></table></div>
+<!-- /GEN:assets-v3.0.0-preview3 -->
+      <details class="fold notes">
+        <summary>Release notes 3.0.0 preview 3</summary>
+        <div class="fold-body notes-body">
+<!-- GEN:notes-v3.0.0-preview3 -->
+<h3>OpenTracker 3.0.0 preview 3</h3>
+<p>A test build of OpenTracker 3, for testing only, not for real work. <strong>Back up your SD card first</strong>, or use a spare card.</p>
+<p>OpenTracker is not affiliated with, endorsed by or supported by Polyend.</p>
+<h4>Two new card synths</h4>
+<p>Preview 3 is preview 2 plus two new synths on the card: <strong>1-Type</strong> and <strong>V-Type</strong>. The Full image now has seventeen synths: five built in (ACD, FAT, VAP, PERC, WTFM) and twelve from the card&#x27;s <code>Modules/</code> folder (FM4, JU6, D-Type, CS-Type, A-Type, T-Type, 8-Type, Hand-Type, B-Type, Arc-Type, 1-Type, V-Type). Dirt, BBD Chorus and Tape are built in; Chorus, LoFi and Echo come from the card.</p>
+<h4>Files</h4>
+<ul>
+<li><code>PolyendTrackerOTv300.ptf</code>: the Full image.</li>
+<li><code>Modules-3.0.0.zip</code>: the twelve card synths and the three card effects. Unzip it at the root of the card; the files land in <code>/Modules</code>. Leave out a module you never use.</li>
+<li><code>Patches-3.0.0.zip</code>: the patches for all seventeen synths. Unzip it at the root of the card.</li>
+<li><code>OpenTracker-3.0.0-Manual.pdf</code>: the user manual for 3.0, with a chapter each for 1-Type and V-Type. It covers what changed since 2.x.</li>
+<li><code>SHA256SUMS</code>: checksums of every file. Check them with <code>sha256sum -c SHA256SUMS</code>.</li>
+</ul>
+<h4>Install</h4>
+<ol>
+<li>Copy <code>PolyendTrackerOTv300.ptf</code> to <code>/Firmware</code> on the SD card. Keep the file name as it is (24 characters).</li>
+<li>Unzip <code>Modules-3.0.0.zip</code> and <code>Patches-3.0.0.zip</code> at the root of the card. <strong>Replace all the <code>.otm</code> files</strong> in <code>/Modules</code> with the ones from this zip, also the ones you had from preview 2: the modules belong to the image they came with, and older ones may be refused (&quot;needs updating&quot;).</li>
+<li><strong>Config &gt; Firmware update</strong>, select the image and confirm. If the screen stays dark after the update, press the power button once.</li>
+<li>To go back, install the stock 1.9.2 image or OpenTracker 2.2.8 the same way.</li>
+</ol>
+<h4>New in preview 3</h4>
+<ul>
+<li><strong>1-Type</strong> (<code>onetype.otm</code>, <code>Patches/1TYPE</code>): a two-oscillator voice with sync, ring and FM, a locked sub, detune, five filter types (LP12, LP24, HP12, BP12 and LPDL), a mod envelope and two LFOs that can follow the song tempo.</li>
+<li><strong>V-Type</strong> (<code>vtype.otm</code>, <code>Patches/VTYPE</code>): a swarm of up to seven detuned saws and a second oscillator with sync and ring into two filters, with Drive between them in four routings (Single, Serial, Parallel, Split), two LFOs and a four-slot mod matrix.</li>
+<li><strong>12 patches each</strong>, in <code>Patches/1TYPE</code> and <code>Patches/VTYPE</code>: leads, basses, plucks, pads and effects. The pack now has 261 patches.</li>
+<li><strong>Card memory:</strong> 1-Type (26 KB) and V-Type (22 KB) are the largest card synths. Both fit together, with one card effect (Echo, LoFi or Chorus) beside them; a third card synth next to the pair says &quot;Card memory full&quot;.</li>
+<li><strong>Your .sy1 patches on 1-Type:</strong> the <code>sy1_to_patch</code> tool in the firmware sources (<code>tools/sy1_to_patch</code>) converts <code>.sy1</code> patch files on a computer into 1-Type patches (<code>Patches/1TYPE/&lt;name&gt;.patch</code>), with a <code>&lt;name&gt;.txt</code> next to each that lists what did not carry over (delay, chorus, the arpeggiator and most of unison: use the track&#x27;s sends, an insert or the Arp FX instead). The manual&#x27;s 1-Type chapter has the details.</li>
+</ul>
+<h4>Fixes since preview 2</h4>
+<ul>
+<li>No other changes to the firmware: everything apart from the two new synths works as in preview 2. The FX a-f names on a step without a note, which follow the synth the sequencer plays there, were already in the preview 2 image.</li>
+</ul>
+<h4>Not in this build</h4>
+<ul>
+<li>Some songs can still overrun the audio block when a Z switches one slot while another slot with inserts starts many notes in the same step.</li>
+<li>1-Type&#x27;s LPDL filter plays as LP24 with a little less resonance.</li>
+<li>CS-Type has no built-in chorus yet; use a Chorus insert.</li>
+<li>After-touch from a MIDI keyboard does not reach Touch yet (use macro 3 or FX CC c).</li>
+<li>Games are removed in 3.x.</li>
+</ul>
+<h4>Please test</h4>
+<ul>
+<li><strong>1-Type and V-Type:</strong> play the 24 new patches, alone and on all three slots; change the Model to 1-Type or V-Type while stopped and while playing; turn the knobs on every page while a note plays and listen for clicks, silence or noise.</li>
+<li><strong>V-Type routings:</strong> Single, Serial, Parallel and Split with high Reso and Drive, and the three Drive curves (Soft, Hard, Fold); the mod matrix on the filters.</li>
+<li><strong>Card memory:</strong> a project with 1-Type and V-Type on two slots, then turn on Echo, LoFi or Chorus (one fits, a second says &quot;Card memory full&quot;); put a third card synth on the last slot.</li>
+<li><strong>CPU:</strong> chords and fast arps on both new synths with the CPU meter on, and in a busy song next to inserts.</li>
+<li><strong>.sy1 imports:</strong> convert your own <code>.sy1</code> patches and tell us which ones sound far from the original.</li>
+<li><strong>Any song:</strong> stuck notes, and the CPU meter on heavy synth steps.</li>
+</ul>
+<p>Report what you used, what you did, what you expected and what happened (a photo or a short video helps) on the <a href="https://github.com/opentracker-fw/opentracker-fw.github.io/issues">issue tracker</a>.</p>
+<!-- /GEN:notes-v3.0.0-preview3 -->
+        </div>
+      </details>
+    </section>
 
     <section class="release" id="v3.0.0-preview2" aria-labelledby="v3.0.0-preview2-h">
       <div class="card-head"><h2 id="v3.0.0-preview2-h">OpenTracker 3.0.0 preview 2</h2><span class="badge badge-preview">Preview</span><span class="tag">tag v3.0.0-preview2</span></div>
@@ -410,7 +484,7 @@
         <ul>
           <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/issues">Report a bug or ask a question</a></li>
           <li><a href="index.html#install">How to install</a></li>
-          <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview2/OpenTracker-3.0.0-Manual.pdf">3.0 manual (PDF)</a></li>
+          <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview3/OpenTracker-3.0.0-Manual.pdf">3.0 manual (PDF)</a></li>
           <li><a href="downloads.html">All releases and checksums</a></li>
         </ul>
       </div>

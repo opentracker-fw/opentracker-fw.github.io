@@ -33,12 +33,12 @@
     <p class="lead">In OpenTracker 3, every synth engine and every master effect is a module. Each
     <a href="images.html">image</a> compiles in a set of them. The sounds are our own design. Synths live in
     <code>opentracker-synths</code>, effects in <code>opentracker-fx</code>.</p>
-    <p class="lead">The <a href="index.html">Full image</a> (3.0.0 preview 2) has every module below: ACD, FAT,
-    VAP, PERC, WTFM and the effects Dirt, BBD Chorus, Tape, Phaser, Tremolo and Bitcrush are built in; the other ten
+    <p class="lead">The <a href="index.html">Full image</a> (3.0.0 preview 3) has every module below: ACD, FAT,
+    VAP, PERC, WTFM and the effects Dirt, BBD Chorus, Tape, Phaser, Tremolo and Bitcrush are built in; the other twelve
     synths and Chorus, LoFi and Echo load from the card. The images listed on each card are the four flavours of the
-    first preview.</p>
+    first preview; 1-Type and V-Type are on the Full image only, from the card.</p>
     <p class="meta">Patch counts are the patches in the first 3.0.0 preview's flavour packs; the Full image's
-    <code>Patches-3.0.0.zip</code> has the patches of all fifteen synths. Copy <code>Patches/</code> from an
+    <code>Patches-3.0.0.zip</code> has the patches of all seventeen synths. Copy <code>Patches/</code> from an
     image's patch zip to the root of the SD card, then use Load Patch on the Synth page.</p>
     </header>
     <nav class="toc" aria-label="On this page"><ul><li><a href="#synths">Synths</a></li><li><a href="#effects">Effects</a></li></ul></nav>
@@ -58,7 +58,7 @@
 <article class="panel module" id="mod-fat1">
   <div class="card-head"><h3>FAT</h3><span class="tag">synth</span></div>
   <div class="sub">module id FAT1</div>
-  <p>A stack of detuned saws for supersaw pads, leads and basses.</p>
+  <p>A stack of detuned saws for wide pads, leads and basses.</p>
   <dl class="meta">
     <dt>Images</dt><dd><ul class="chips"><li><a href="images.html#get-classic"><span class="key small" aria-hidden="true">a</span> Classic</a></li><li><a href="images.html#get-idm"><span class="key small" aria-hidden="true">i</span> IDM</a></li><li><a href="images.html#get-techno"><span class="key small" aria-hidden="true">t</span> Techno</a></li><li><a href="images.html#get-retro"><span class="key small" aria-hidden="true">r</span> Retro</a></li></ul></dd>
     <dt>Patches</dt><dd>8 patches</dd>
@@ -181,6 +181,24 @@
     <dt>Patches</dt><dd>12 patches</dd>
   </dl>
 </article>
+<article class="panel module" id="mod-1ty1">
+  <div class="card-head"><h3>1-Type</h3><span class="tag">synth</span></div>
+  <div class="sub">module id 1TY1</div>
+  <p>Two-oscillator synth in the style of a classic freeware softsynth: sync, ring and FM, a locked sub, detune, five filter types (LP12, LP24, HP12, BP12, LPDL), a mod envelope and two LFOs that can follow the tempo. Converted .sy1 patches play on it (tools/sy1_to_patch).</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="index.html#download"><span class="key small" aria-hidden="true">v</span> Full (card)</a></li></ul></dd>
+    <dt>Patches</dt><dd>12 patches</dd>
+  </dl>
+</article>
+<article class="panel module" id="mod-vty1">
+  <div class="card-head"><h3>V-Type</h3><span class="tag">synth</span></div>
+  <div class="sub">module id VTY1</div>
+  <p>Swarm-oscillator virtual analog synth: up to seven detuned saws and a second oscillator with sync and ring into two filters, with Drive (Soft, Hard, Fold) between them in four routings (Single, Serial, Parallel, Split), two LFOs and a four-slot mod matrix.</p>
+  <dl class="meta">
+    <dt>Images</dt><dd><ul class="chips"><li><a href="index.html#download"><span class="key small" aria-hidden="true">v</span> Full (card)</a></li></ul></dd>
+    <dt>Patches</dt><dd>12 patches</dd>
+  </dl>
+</article>
 <!-- /GEN:synth-cards -->
     </div>
 
@@ -284,7 +302,7 @@
         <ul>
           <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/issues">Report a bug or ask a question</a></li>
           <li><a href="index.html#install">How to install</a></li>
-          <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview2/OpenTracker-3.0.0-Manual.pdf">3.0 manual (PDF)</a></li>
+          <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview3/OpenTracker-3.0.0-Manual.pdf">3.0 manual (PDF)</a></li>
           <li><a href="downloads.html">All releases and checksums</a></li>
         </ul>
       </div>
