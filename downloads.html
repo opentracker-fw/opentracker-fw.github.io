@@ -38,6 +38,7 @@
 <!-- GEN:stable-toc -->
 <li><a href="#v2.2.8">2.2.8 stable</a></li>
 <!-- /GEN:stable-toc -->
+        <li><a href="#v3.0.0-preview4">3.0.0 preview 4</a></li>
         <li><a href="#v3.0.0-preview3">3.0.0 preview 3</a></li>
         <li><a href="#v3.0.0-preview2">3.0.0 preview 2</a></li>
         <li><a href="#v3.0.0-preview">3.0.0 preview</a></li>
@@ -143,6 +144,83 @@
       </details>
     </section>
 <!-- /GEN:stable-release -->
+
+    <section class="release" id="v3.0.0-preview4" aria-labelledby="v3.0.0-preview4-h">
+      <div class="card-head"><h2 id="v3.0.0-preview4-h">OpenTracker 3.0.0 preview 4</h2><span class="badge badge-preview">Preview</span><span class="tag">tag v3.0.0-preview4</span></div>
+      <p>Preview 3 plus a new card synth, 6-Type, that plays your .syx voice dumps, and fixes: the Full image, its thirteen card synths and three card effects, and the patches for all eighteen synths.</p>
+<!-- GEN:assets-v3.0.0-preview4 -->
+<div class="table-wrap"><table class="stack">
+<caption>Assets of release <code>v3.0.0-preview4</code></caption>
+<thead><tr><th scope="col">File</th><th scope="col">What it is</th><th scope="col">Size</th><th scope="col">SHA256</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview4/Modules-3.0.0.zip">Modules-3.0.0.zip</a></th><td data-label="What it is">Card synths and card effects for the Full image (thirteen synths, three effects) and 6-Type&#x27;s licence files: copy its Modules folder to the card</td><td class="num" data-label="Size">147.5 KB</td><td class="sha" data-label="SHA256">8272d7ce3390b04f30cb2dc7b476cc1cca0baf459a19d6f26df9562e87c1338e</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview4/OpenTracker-3.0.0-Manual.pdf">OpenTracker-3.0.0-Manual.pdf</a></th><td data-label="What it is">User manual for 3.0: what changed since 2.x, the Full image, its card synths, 1-Type, V-Type and 6-Type</td><td class="num" data-label="Size">486.5 KB</td><td class="sha" data-label="SHA256">5a39c521b449aef18c6327a9ceea6f89f13ef445966bf1cdc744678a9e48a99e</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview4/Patches-3.0.0.zip">Patches-3.0.0.zip</a></th><td data-label="What it is">Patches for the Full image: 273 patches for all eighteen synths</td><td class="num" data-label="Size">120.8 KB</td><td class="sha" data-label="SHA256">1f07fcc6b3b03a4d6d5a0ef193bb1ac03049724bd02eb11af8328b2231eeb48a</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview4/PolyendTrackerOTv300.ptf">PolyendTrackerOTv300.ptf</a></th><td data-label="What it is">Full image: every synth, five built in and thirteen from the card</td><td class="num" data-label="Size">2.2 MB</td><td class="sha" data-label="SHA256">4d817542469701aedb64a0497f7d30208fe739f33e851f1ba843f6d6899042f0</td></tr>
+<tr><th scope="row"><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview4/SHA256SUMS">SHA256SUMS</a></th><td data-label="What it is">Checksums of every file in this release</td><td class="num" data-label="Size">354 B</td><td class="sha" data-label="SHA256">&mdash;</td></tr>
+</tbody></table></div>
+<!-- /GEN:assets-v3.0.0-preview4 -->
+      <details class="fold notes">
+        <summary>Release notes 3.0.0 preview 4</summary>
+        <div class="fold-body notes-body">
+<!-- GEN:notes-v3.0.0-preview4 -->
+<h3>OpenTracker 3.0.0 preview 4</h3>
+<p>A test build of OpenTracker 3, for testing only, not for real work. <strong>Back up your SD card first</strong>, or use a spare card.</p>
+<p>OpenTracker is not affiliated with, endorsed by or supported by Polyend.</p>
+<h4>A new card synth: 6-Type</h4>
+<p>Preview 4 adds <strong>6-Type</strong>, a six-operator FM synth on the card that plays your own <code>.syx</code> voice dumps, and a few fixes. The Full image now has eighteen synths: five built in (ACD, FAT, VAP, PERC, WTFM) and thirteen from the card&#x27;s <code>Modules/</code> folder (FM4, JU6, D-Type, CS-Type, A-Type, T-Type, 8-Type, Hand-Type, B-Type, Arc-Type, 1-Type, V-Type, 6-Type). Dirt, BBD Chorus and Tape are built in; Chorus, LoFi and Echo come from the card.</p>
+<h4>Files</h4>
+<ul>
+<li><code>PolyendTrackerOTv300.ptf</code>: the Full image.</li>
+<li><code>Modules-3.0.0.zip</code>: the thirteen card synths and the three card effects, and 6-Type&#x27;s licence files (<code>sixtype-README.md</code>, <code>sixtype-msfa.txt</code>). Unzip it at the root of the card; the files land in <code>/Modules</code>. Leave out a module you never use.</li>
+<li><code>Patches-3.0.0.zip</code>: the patches for all eighteen synths, 273 in all. Unzip it at the root of the card.</li>
+<li><code>OpenTracker-3.0.0-Manual.pdf</code>: the user manual for 3.0, with a chapter each for 1-Type, V-Type and 6-Type. It covers what changed since 2.x.</li>
+<li><code>SHA256SUMS</code>: checksums of every file. Check them with <code>sha256sum -c SHA256SUMS</code>.</li>
+</ul>
+<h4>Install</h4>
+<ol>
+<li>Copy <code>PolyendTrackerOTv300.ptf</code> to <code>/Firmware</code> on the SD card. Keep the file name as it is (24 characters).</li>
+<li>Unzip <code>Modules-3.0.0.zip</code> and <code>Patches-3.0.0.zip</code> at the root of the card. <strong>Replace all the <code>.otm</code> files</strong> in <code>/Modules</code> with the ones from this zip: every module was rebuilt for this image, and the ones from preview 3 show &quot;needs updating&quot;.</li>
+<li><strong>Config &gt; Firmware update</strong>, select the image and confirm. If the screen stays dark after the update, press the power button once.</li>
+<li>To go back, install the stock 1.9.2 image or OpenTracker 2.2.8 the same way.</li>
+</ol>
+<h4>New in preview 4</h4>
+<ul>
+<li><strong>6-Type</strong> (<code>sixtype.otm</code>, <code>Patches/6TYPE</code>): six-operator FM with 32 algorithms. Each operator has its own envelope, level scaling, velocity sensitivity and ratio or fixed frequency; the voice adds a pitch envelope and an LFO. On the Synth page, Volume and Mono (Retrigger or Legato at Polyphony 1), and on top of the voice Brightness, Feedback, Attack, Release, LFO Depth and Detune, with M1-M6 on them.</li>
+<li><strong>Your .syx voice dumps:</strong> copy 32-voice banks (4104 bytes) and single voices (163 bytes) to <code>Patches/6TYPE</code>. Load Patch lists the banks first: a bank opens like a folder with F8 (Open) or Right, Left goes back. The voices preview with F5 / F6 and play on the pads; F8 loads one. Save writes it as a <code>.patch</code>, and the project keeps the voice.</li>
+<li><strong>Card memory:</strong> 6-Type takes about 25 KB. It fits next to 1-Type or V-Type, but not next to both. Next to V-Type one card effect (Echo, LoFi or Chorus) fits too; next to 1-Type only Chorus.</li>
+<li><strong>12 patches</strong> in <code>Patches/6TYPE</code>. The pack now has 273 patches.</li>
+<li><strong>CPU:</strong> up to 8 voices per slot.</li>
+</ul>
+<h4>Fixes since preview 3</h4>
+<ul>
+<li>Pattern: in edit mode a pad in the Instr column plays the instrument also when the song is stopped, as on stock.</li>
+<li>Pattern: F1 + pad switches the pattern at once while playing (from the next step), as on stock. Pattern + Left / Right still waits for the end of the pattern.</li>
+<li>Resample: each new take gets its own number, &quot;Resample Master 001&quot;, &quot;002&quot; and so on.</li>
+<li>Song: after Play on the Performance screen, the Song screen shows the play head and its cursor follows it. A pattern loop set on the Song screen ends with its run.</li>
+<li>Load Patch: a patch imported from a file saves under a name the card can hold (<code>* ? &lt; &gt; | : &quot;</code> become <code>_</code>), and the first Save asks &quot;Overwrite?&quot; when a patch of that name exists.</li>
+</ul>
+<h4>Not in this build</h4>
+<ul>
+<li>Some songs can still overrun the audio block when a Z switches one slot while another slot with inserts starts many notes in the same step.</li>
+<li>6-Type has no operator editor: a voice plays as it comes from its file, with the controls above on top.</li>
+<li>1-Type&#x27;s LPDL filter plays as LP24 with a little less resonance.</li>
+<li>CS-Type has no built-in chorus yet; use a Chorus insert.</li>
+<li>After-touch from a MIDI keyboard does not reach Touch yet (use macro 3 or FX CC c).</li>
+<li>Games are removed in 3.x.</li>
+</ul>
+<h4>Please test</h4>
+<ul>
+<li><strong>.syx loading:</strong> copy your own banks and single voices to <code>Patches/6TYPE</code>; open banks with F8 and with Right, go back with Left, preview voices with F5 / F6 and the pads, load and Save them, then reopen the project. Tell us which files do not open (&quot;Not a patch bank&quot;) and which voices sound far from what you expect.</li>
+<li><strong>6-Type:</strong> play the 12 new patches, alone and on all three slots; chords and fast arps with the CPU meter on, on one slot and on all three; Mono Retrigger and Legato at Polyphony 1; turn Brightness, Feedback, LFO Depth and Detune while notes play and listen for clicks or noise.</li>
+<li><strong>Card memory:</strong> 6-Type next to V-Type with Echo, LoFi or Chorus on; 6-Type next to 1-Type with Chorus on (LoFi or Echo should say &quot;Card memory full&quot;); then all three large synths in one project (the last one says &quot;Card memory full&quot;).</li>
+<li><strong>The fixes:</strong> Instr column pads while stopped, F1 + pad while playing, several resample takes, and Song after a Performance run.</li>
+<li><strong>Any song:</strong> stuck notes, and the CPU meter on heavy synth steps.</li>
+</ul>
+<p>Report what you used, what you did, what you expected and what happened (a photo or a short video helps) on the <a href="https://github.com/opentracker-fw/opentracker-fw.github.io/issues">issue tracker</a>.</p>
+<!-- /GEN:notes-v3.0.0-preview4 -->
+        </div>
+      </details>
+    </section>
 
     <section class="release" id="v3.0.0-preview3" aria-labelledby="v3.0.0-preview3-h">
       <div class="card-head"><h2 id="v3.0.0-preview3-h">OpenTracker 3.0.0 preview 3</h2><span class="badge badge-preview">Preview</span><span class="tag">tag v3.0.0-preview3</span></div>
@@ -484,7 +562,7 @@
         <ul>
           <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/issues">Report a bug or ask a question</a></li>
           <li><a href="index.html#install">How to install</a></li>
-          <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview3/OpenTracker-3.0.0-Manual.pdf">3.0 manual (PDF)</a></li>
+          <li><a href="https://github.com/opentracker-fw/opentracker-fw.github.io/releases/download/v3.0.0-preview4/OpenTracker-3.0.0-Manual.pdf">3.0 manual (PDF)</a></li>
           <li><a href="downloads.html">All releases and checksums</a></li>
         </ul>
       </div>

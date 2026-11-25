@@ -40,12 +40,14 @@ PREV_STABLE_TAG = "v2.2.6"
 STABLE_NEWS = ("<strong>synth presets and the Z FX</strong>, a new sample filter, faster opening of projects with "
                "long streamed instruments, Play / Stop in the file browsers and fewer CPU overloads on heavy synth steps "
                "(2.2.7 and 2.2.8).")
-PREVIEW_VERSION = "3.0.0 preview 3"
+PREVIEW_VERSION = "3.0.0 preview 4"
 FW_REPO = f"https://github.com/{ORG}/opentracker"
-PREVIEW_TAG = "v3.0.0-preview3"
+PREVIEW_TAG = "v3.0.0-preview4"
 # The previous preview keeps its section on downloads.html.
-PREV_PREVIEW_TAG = "v3.0.0-preview2"
-# The four flavour images stay on the first preview's release (previews 2 and 3 are the Full image only).
+PREV_PREVIEW_TAG = "v3.0.0-preview3"
+# Older previews that keep their sections too (generated file tables and notes), newest first.
+OLDER_PREVIEW_TAGS = ("v3.0.0-preview2",)
+# The four flavour images stay on the first preview's release (previews 2 to 4 are the Full image only).
 FLAVOUR_TAG = "v3.0.0-preview"
 FLAVOUR_VERSION = "3.0.0 preview"
 
@@ -207,6 +209,10 @@ MODULES = {
                  desc="Swarm-oscillator virtual analog synth: up to seven detuned saws and a second oscillator with sync and ring "
                       "into two filters, with Drive (Soft, Hard, Fold) between them in four routings (Single, Serial, Parallel, "
                       "Split), two LFOs and a four-slot mod matrix."),
+    "6TY1": dict(name="6-Type", kind="synth", repo="synths", folder="modules/sixtype", patches=12, full=True,
+                 desc="Six-operator FM: 32 algorithms, six operators with their own envelopes, a pitch envelope and an LFO. "
+                      "Plays your .syx voice dumps (32-voice banks and single voices) from Patches/6TYPE, with Brightness, "
+                      "Feedback, Attack, Release, LFO Depth and Detune on top of the voice."),
     "TAPE": dict(name="Tape", kind="effect", repo="fx", folder="modules/tape", patches=None,
                  desc="Tape on the whole mix: drive (saturation), head-loss high cut, wow, flutter and mix."),
     "CHOR": dict(name="Chorus", kind="effect", repo="fx", folder="modules/chorus", patches=None,
@@ -243,12 +249,22 @@ ASSET_DESC = {
     "Patches-3.0.0.zip": "Patches for the Full image: all fifteen synths",
     "SHA256SUMS": "Checksums of every file in this release",
 }
-# Descriptions that differ in the current preview (the older releases keep the ones above).
-ASSET_DESC_PREVIEW = {
-    "PolyendTrackerOTv300.ptf": "Full image: every synth, five built in and twelve from the card",
-    "Modules-3.0.0.zip": "Card synths and card effects for the Full image (twelve synths, three effects): copy its Modules folder to the card",
-    "Patches-3.0.0.zip": "Patches for the Full image: 261 patches for all seventeen synths",
-    "OpenTracker-3.0.0-Manual.pdf": "User manual for 3.0: what changed since 2.x, the Full image, its card synths, 1-Type and V-Type",
+# Descriptions that differ in a later preview (the older releases keep the ones above).
+ASSET_DESC_BY_TAG = {
+    "v3.0.0-preview4": {
+        "PolyendTrackerOTv300.ptf": "Full image: every synth, five built in and thirteen from the card",
+        "Modules-3.0.0.zip": "Card synths and card effects for the Full image (thirteen synths, three effects) and 6-Type's "
+                             "licence files: copy its Modules folder to the card",
+        "Patches-3.0.0.zip": "Patches for the Full image: 273 patches for all eighteen synths",
+        "OpenTracker-3.0.0-Manual.pdf": "User manual for 3.0: what changed since 2.x, the Full image, its card synths, "
+                                        "1-Type, V-Type and 6-Type",
+    },
+    "v3.0.0-preview3": {
+        "PolyendTrackerOTv300.ptf": "Full image: every synth, five built in and twelve from the card",
+        "Modules-3.0.0.zip": "Card synths and card effects for the Full image (twelve synths, three effects): copy its Modules folder to the card",
+        "Patches-3.0.0.zip": "Patches for the Full image: 261 patches for all seventeen synths",
+        "OpenTracker-3.0.0-Manual.pdf": "User manual for 3.0: what changed since 2.x, the Full image, its card synths, 1-Type and V-Type",
+    },
 }
 
 
@@ -314,7 +330,7 @@ def asset_table(tag, rows, images):
            '<thead><tr><th scope="col">File</th><th scope="col">What it is</th>'
            '<th scope="col">Size</th><th scope="col">SHA256</th></tr></thead><tbody>']
     for name, h, size in rows:
-        what = (ASSET_DESC_PREVIEW.get(name) if tag == PREVIEW_TAG else None) or ASSET_DESC.get(name) or by_file.get(name, "")
+        what = ASSET_DESC_BY_TAG.get(tag, {}).get(name) or ASSET_DESC.get(name) or by_file.get(name, "")
         if not what and name.endswith(".zip"):
             what = "Tester zip: the images, all their patches and the README in one file"
         out.append(
@@ -822,15 +838,17 @@ def main():
         f.write("window.OT_DATA = " + json.dumps(data, indent=2) + ";\n")
 
     notes = {}
-    for tag in (STABLE_TAG, PREVIEW_TAG, PREV_PREVIEW_TAG, FLAVOUR_TAG):
+    tags = (STABLE_TAG, PREVIEW_TAG, PREV_PREVIEW_TAG) + OLDER_PREVIEW_TAGS + (FLAVOUR_TAG,)
+    for tag in tags:
         with open(os.path.join(root, "notes", tag + ".md")) as f:
             notes[tag] = md_to_html(f.read(), shift=2)
 
-    sums = {tag: read_sums(a.assets, tag) for tag in (STABLE_TAG, PREVIEW_TAG, PREV_PREVIEW_TAG, FLAVOUR_TAG)}
-    sizes = {n: s for tag in (FLAVOUR_TAG, PREV_PREVIEW_TAG, STABLE_TAG, PREVIEW_TAG) for n, _, s in sums[tag]}   # newest wins
+    sums = {tag: read_sums(a.assets, tag) for tag in tags}
+    oldest_first = (FLAVOUR_TAG,) + OLDER_PREVIEW_TAGS[::-1] + (PREV_PREVIEW_TAG, STABLE_TAG, PREVIEW_TAG)
+    sizes = {n: s for tag in oldest_first for n, _, s in sums[tag]}   # newest wins
     by_p = {i["profile"]: i for i in images}
     dates = {}
-    for tag in (FLAVOUR_TAG, PREV_PREVIEW_TAG, STABLE_TAG, PREVIEW_TAG):   # a newer release's file wins
+    for tag in oldest_first:   # a newer release's file wins
         for n, _, _ in sums[tag]:
             st = os.stat(os.path.join(a.assets, tag, n))
             dates[n] = __import__("datetime").date.fromtimestamp(st.st_mtime).isoformat()
@@ -850,6 +868,8 @@ def main():
         f"notes-{PREVIEW_TAG}": notes[PREVIEW_TAG],
         f"assets-{PREV_PREVIEW_TAG}": asset_table(PREV_PREVIEW_TAG, sums[PREV_PREVIEW_TAG], images),
         f"notes-{PREV_PREVIEW_TAG}": notes[PREV_PREVIEW_TAG],
+        **{f"assets-{t}": asset_table(t, sums[t], images) for t in OLDER_PREVIEW_TAGS},
+        **{f"notes-{t}": notes[t] for t in OLDER_PREVIEW_TAGS},
         f"assets-{FLAVOUR_TAG}": asset_table(FLAVOUR_TAG, sums[FLAVOUR_TAG], images),
         f"notes-{FLAVOUR_TAG}": notes[FLAVOUR_TAG],
         "notes-stable": notes[STABLE_TAG],
